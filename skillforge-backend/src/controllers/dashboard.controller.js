@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 exports.getDashboard = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.user.id;
 
     const currentWeek = await prisma.weekPlan.findFirst({
       where: { userId },
@@ -49,7 +49,7 @@ exports.getDashboard = async (req, res) => {
 
 exports.getMomentum = async (req, res) => {
   try {
-    const userId = req.userId;
+    const userId = req.user.id;
 
     const plans = await prisma.weekPlan.findMany({
       where: { userId },

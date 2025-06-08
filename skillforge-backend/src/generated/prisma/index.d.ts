@@ -1356,13 +1356,19 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Skill: number
-    WeekPlan: number
+    skills: number
+    categories: number
+    weekPlans: number
+    goals: number
+    reflections: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Skill?: boolean | UserCountOutputTypeCountSkillArgs
-    WeekPlan?: boolean | UserCountOutputTypeCountWeekPlanArgs
+    skills?: boolean | UserCountOutputTypeCountSkillsArgs
+    categories?: boolean | UserCountOutputTypeCountCategoriesArgs
+    weekPlans?: boolean | UserCountOutputTypeCountWeekPlansArgs
+    goals?: boolean | UserCountOutputTypeCountGoalsArgs
+    reflections?: boolean | UserCountOutputTypeCountReflectionsArgs
   }
 
   // Custom InputTypes
@@ -1379,15 +1385,36 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSkillArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSkillsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SkillWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountWeekPlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SkillCategoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountWeekPlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WeekPlanWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGoalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GoalWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReflectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReflectionWhereInput
   }
 
 
@@ -1427,11 +1454,11 @@ export namespace Prisma {
    */
 
   export type SkillCountOutputType = {
-    Goal: number
+    goals: number
   }
 
   export type SkillCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Goal?: boolean | SkillCountOutputTypeCountGoalArgs
+    goals?: boolean | SkillCountOutputTypeCountGoalsArgs
   }
 
   // Custom InputTypes
@@ -1448,7 +1475,7 @@ export namespace Prisma {
   /**
    * SkillCountOutputType without action
    */
-  export type SkillCountOutputTypeCountGoalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SkillCountOutputTypeCountGoalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GoalWhereInput
   }
 
@@ -1660,8 +1687,11 @@ export namespace Prisma {
     name?: boolean
     refreshToken?: boolean
     createdAt?: boolean
-    Skill?: boolean | User$SkillArgs<ExtArgs>
-    WeekPlan?: boolean | User$WeekPlanArgs<ExtArgs>
+    skills?: boolean | User$skillsArgs<ExtArgs>
+    categories?: boolean | User$categoriesArgs<ExtArgs>
+    weekPlans?: boolean | User$weekPlansArgs<ExtArgs>
+    goals?: boolean | User$goalsArgs<ExtArgs>
+    reflections?: boolean | User$reflectionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1694,8 +1724,11 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "refreshToken" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Skill?: boolean | User$SkillArgs<ExtArgs>
-    WeekPlan?: boolean | User$WeekPlanArgs<ExtArgs>
+    skills?: boolean | User$skillsArgs<ExtArgs>
+    categories?: boolean | User$categoriesArgs<ExtArgs>
+    weekPlans?: boolean | User$weekPlansArgs<ExtArgs>
+    goals?: boolean | User$goalsArgs<ExtArgs>
+    reflections?: boolean | User$reflectionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1704,8 +1737,11 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Skill: Prisma.$SkillPayload<ExtArgs>[]
-      WeekPlan: Prisma.$WeekPlanPayload<ExtArgs>[]
+      skills: Prisma.$SkillPayload<ExtArgs>[]
+      categories: Prisma.$SkillCategoryPayload<ExtArgs>[]
+      weekPlans: Prisma.$WeekPlanPayload<ExtArgs>[]
+      goals: Prisma.$GoalPayload<ExtArgs>[]
+      reflections: Prisma.$ReflectionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2108,8 +2144,11 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Skill<T extends User$SkillArgs<ExtArgs> = {}>(args?: Subset<T, User$SkillArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    WeekPlan<T extends User$WeekPlanArgs<ExtArgs> = {}>(args?: Subset<T, User$WeekPlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    skills<T extends User$skillsArgs<ExtArgs> = {}>(args?: Subset<T, User$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categories<T extends User$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, User$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    weekPlans<T extends User$weekPlansArgs<ExtArgs> = {}>(args?: Subset<T, User$weekPlansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeekPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    goals<T extends User$goalsArgs<ExtArgs> = {}>(args?: Subset<T, User$goalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reflections<T extends User$reflectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$reflectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReflectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2533,9 +2572,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Skill
+   * User.skills
    */
-  export type User$SkillArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$skillsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Skill
      */
@@ -2557,9 +2596,33 @@ export namespace Prisma {
   }
 
   /**
-   * User.WeekPlan
+   * User.categories
    */
-  export type User$WeekPlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SkillCategory
+     */
+    select?: SkillCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SkillCategory
+     */
+    omit?: SkillCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillCategoryInclude<ExtArgs> | null
+    where?: SkillCategoryWhereInput
+    orderBy?: SkillCategoryOrderByWithRelationInput | SkillCategoryOrderByWithRelationInput[]
+    cursor?: SkillCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SkillCategoryScalarFieldEnum | SkillCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.weekPlans
+   */
+  export type User$weekPlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the WeekPlan
      */
@@ -2578,6 +2641,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WeekPlanScalarFieldEnum | WeekPlanScalarFieldEnum[]
+  }
+
+  /**
+   * User.goals
+   */
+  export type User$goalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Goal
+     */
+    select?: GoalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Goal
+     */
+    omit?: GoalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GoalInclude<ExtArgs> | null
+    where?: GoalWhereInput
+    orderBy?: GoalOrderByWithRelationInput | GoalOrderByWithRelationInput[]
+    cursor?: GoalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GoalScalarFieldEnum | GoalScalarFieldEnum[]
+  }
+
+  /**
+   * User.reflections
+   */
+  export type User$reflectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Reflection
+     */
+    select?: ReflectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Reflection
+     */
+    omit?: ReflectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReflectionInclude<ExtArgs> | null
+    where?: ReflectionWhereInput
+    orderBy?: ReflectionOrderByWithRelationInput | ReflectionOrderByWithRelationInput[]
+    cursor?: ReflectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReflectionScalarFieldEnum | ReflectionScalarFieldEnum[]
   }
 
   /**
@@ -2612,16 +2723,22 @@ export namespace Prisma {
   export type SkillCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    createdAt: Date | null
+    userId: string | null
   }
 
   export type SkillCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    createdAt: Date | null
+    userId: string | null
   }
 
   export type SkillCategoryCountAggregateOutputType = {
     id: number
     name: number
+    createdAt: number
+    userId: number
     _all: number
   }
 
@@ -2629,16 +2746,22 @@ export namespace Prisma {
   export type SkillCategoryMinAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    userId?: true
   }
 
   export type SkillCategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    userId?: true
   }
 
   export type SkillCategoryCountAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -2717,6 +2840,8 @@ export namespace Prisma {
   export type SkillCategoryGroupByOutputType = {
     id: string
     name: string
+    createdAt: Date
+    userId: string
     _count: SkillCategoryCountAggregateOutputType | null
     _min: SkillCategoryMinAggregateOutputType | null
     _max: SkillCategoryMaxAggregateOutputType | null
@@ -2739,6 +2864,9 @@ export namespace Prisma {
   export type SkillCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     skills?: boolean | SkillCategory$skillsArgs<ExtArgs>
     _count?: boolean | SkillCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["skillCategory"]>
@@ -2746,34 +2874,50 @@ export namespace Prisma {
   export type SkillCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["skillCategory"]>
 
   export type SkillCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["skillCategory"]>
 
   export type SkillCategorySelectScalar = {
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    userId?: boolean
   }
 
-  export type SkillCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["skillCategory"]>
+  export type SkillCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "userId", ExtArgs["result"]["skillCategory"]>
   export type SkillCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     skills?: boolean | SkillCategory$skillsArgs<ExtArgs>
     _count?: boolean | SkillCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type SkillCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type SkillCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type SkillCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SkillCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $SkillCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SkillCategory"
     objects: {
+      user: Prisma.$UserPayload<ExtArgs>
       skills: Prisma.$SkillPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      createdAt: Date
+      userId: string
     }, ExtArgs["result"]["skillCategory"]>
     composites: {}
   }
@@ -3168,6 +3312,7 @@ export namespace Prisma {
    */
   export interface Prisma__SkillCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     skills<T extends SkillCategory$skillsArgs<ExtArgs> = {}>(args?: Subset<T, SkillCategory$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3200,6 +3345,8 @@ export namespace Prisma {
   interface SkillCategoryFieldRefs {
     readonly id: FieldRef<"SkillCategory", 'String'>
     readonly name: FieldRef<"SkillCategory", 'String'>
+    readonly createdAt: FieldRef<"SkillCategory", 'DateTime'>
+    readonly userId: FieldRef<"SkillCategory", 'String'>
   }
     
 
@@ -3449,6 +3596,10 @@ export namespace Prisma {
      */
     data: SkillCategoryCreateManyInput | SkillCategoryCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillCategoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3519,6 +3670,10 @@ export namespace Prisma {
      * Limit how many SkillCategories to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SkillCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3820,7 +3975,7 @@ export namespace Prisma {
     categoryId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | SkillCategoryDefaultArgs<ExtArgs>
-    Goal?: boolean | Skill$GoalArgs<ExtArgs>
+    goals?: boolean | Skill$goalsArgs<ExtArgs>
     _count?: boolean | SkillCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["skill"]>
 
@@ -3865,7 +4020,7 @@ export namespace Prisma {
   export type SkillInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | SkillCategoryDefaultArgs<ExtArgs>
-    Goal?: boolean | Skill$GoalArgs<ExtArgs>
+    goals?: boolean | Skill$goalsArgs<ExtArgs>
     _count?: boolean | SkillCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SkillIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3882,7 +4037,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       category: Prisma.$SkillCategoryPayload<ExtArgs>
-      Goal: Prisma.$GoalPayload<ExtArgs>[]
+      goals: Prisma.$GoalPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4289,7 +4444,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category<T extends SkillCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SkillCategoryDefaultArgs<ExtArgs>>): Prisma__SkillCategoryClient<$Result.GetResult<Prisma.$SkillCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Goal<T extends Skill$GoalArgs<ExtArgs> = {}>(args?: Subset<T, Skill$GoalArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    goals<T extends Skill$goalsArgs<ExtArgs> = {}>(args?: Subset<T, Skill$goalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4723,9 +4878,9 @@ export namespace Prisma {
   }
 
   /**
-   * Skill.Goal
+   * Skill.goals
    */
-  export type Skill$GoalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Skill$goalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Goal
      */
@@ -4777,52 +4932,52 @@ export namespace Prisma {
 
   export type WeekPlanMinAggregateOutputType = {
     id: string | null
-    userId: string | null
     startDate: Date | null
     endDate: Date | null
     createdAt: Date | null
+    userId: string | null
   }
 
   export type WeekPlanMaxAggregateOutputType = {
     id: string | null
-    userId: string | null
     startDate: Date | null
     endDate: Date | null
     createdAt: Date | null
+    userId: string | null
   }
 
   export type WeekPlanCountAggregateOutputType = {
     id: number
-    userId: number
     startDate: number
     endDate: number
     createdAt: number
+    userId: number
     _all: number
   }
 
 
   export type WeekPlanMinAggregateInputType = {
     id?: true
-    userId?: true
     startDate?: true
     endDate?: true
     createdAt?: true
+    userId?: true
   }
 
   export type WeekPlanMaxAggregateInputType = {
     id?: true
-    userId?: true
     startDate?: true
     endDate?: true
     createdAt?: true
+    userId?: true
   }
 
   export type WeekPlanCountAggregateInputType = {
     id?: true
-    userId?: true
     startDate?: true
     endDate?: true
     createdAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -4900,10 +5055,10 @@ export namespace Prisma {
 
   export type WeekPlanGroupByOutputType = {
     id: string
-    userId: string
     startDate: Date
     endDate: Date
     createdAt: Date
+    userId: string
     _count: WeekPlanCountAggregateOutputType | null
     _min: WeekPlanMinAggregateOutputType | null
     _max: WeekPlanMaxAggregateOutputType | null
@@ -4925,47 +5080,47 @@ export namespace Prisma {
 
   export type WeekPlanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     startDate?: boolean
     endDate?: boolean
     createdAt?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     goals?: boolean | WeekPlan$goalsArgs<ExtArgs>
     reflection?: boolean | WeekPlan$reflectionArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | WeekPlanCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["weekPlan"]>
 
   export type WeekPlanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     startDate?: boolean
     endDate?: boolean
     createdAt?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["weekPlan"]>
 
   export type WeekPlanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     startDate?: boolean
     endDate?: boolean
     createdAt?: boolean
+    userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["weekPlan"]>
 
   export type WeekPlanSelectScalar = {
     id?: boolean
-    userId?: boolean
     startDate?: boolean
     endDate?: boolean
     createdAt?: boolean
+    userId?: boolean
   }
 
-  export type WeekPlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "startDate" | "endDate" | "createdAt", ExtArgs["result"]["weekPlan"]>
+  export type WeekPlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "startDate" | "endDate" | "createdAt" | "userId", ExtArgs["result"]["weekPlan"]>
   export type WeekPlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     goals?: boolean | WeekPlan$goalsArgs<ExtArgs>
     reflection?: boolean | WeekPlan$reflectionArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | WeekPlanCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WeekPlanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4978,16 +5133,16 @@ export namespace Prisma {
   export type $WeekPlanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "WeekPlan"
     objects: {
+      user: Prisma.$UserPayload<ExtArgs>
       goals: Prisma.$GoalPayload<ExtArgs>[]
       reflection: Prisma.$ReflectionPayload<ExtArgs> | null
-      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
       startDate: Date
       endDate: Date
       createdAt: Date
+      userId: string
     }, ExtArgs["result"]["weekPlan"]>
     composites: {}
   }
@@ -5382,9 +5537,9 @@ export namespace Prisma {
    */
   export interface Prisma__WeekPlanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     goals<T extends WeekPlan$goalsArgs<ExtArgs> = {}>(args?: Subset<T, WeekPlan$goalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reflection<T extends WeekPlan$reflectionArgs<ExtArgs> = {}>(args?: Subset<T, WeekPlan$reflectionArgs<ExtArgs>>): Prisma__ReflectionClient<$Result.GetResult<Prisma.$ReflectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5415,10 +5570,10 @@ export namespace Prisma {
    */
   interface WeekPlanFieldRefs {
     readonly id: FieldRef<"WeekPlan", 'String'>
-    readonly userId: FieldRef<"WeekPlan", 'String'>
     readonly startDate: FieldRef<"WeekPlan", 'DateTime'>
     readonly endDate: FieldRef<"WeekPlan", 'DateTime'>
     readonly createdAt: FieldRef<"WeekPlan", 'DateTime'>
+    readonly userId: FieldRef<"WeekPlan", 'String'>
   }
     
 
@@ -5888,64 +6043,70 @@ export namespace Prisma {
 
   export type GoalMinAggregateOutputType = {
     id: string | null
-    weekPlanId: string | null
     title: string | null
-    skillId: string | null
     status: $Enums.GoalStatus | null
     notes: string | null
     createdAt: Date | null
+    userId: string | null
+    weekPlanId: string | null
+    skillId: string | null
   }
 
   export type GoalMaxAggregateOutputType = {
     id: string | null
-    weekPlanId: string | null
     title: string | null
-    skillId: string | null
     status: $Enums.GoalStatus | null
     notes: string | null
     createdAt: Date | null
+    userId: string | null
+    weekPlanId: string | null
+    skillId: string | null
   }
 
   export type GoalCountAggregateOutputType = {
     id: number
-    weekPlanId: number
     title: number
-    skillId: number
     status: number
     notes: number
     createdAt: number
+    userId: number
+    weekPlanId: number
+    skillId: number
     _all: number
   }
 
 
   export type GoalMinAggregateInputType = {
     id?: true
-    weekPlanId?: true
     title?: true
-    skillId?: true
     status?: true
     notes?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
+    skillId?: true
   }
 
   export type GoalMaxAggregateInputType = {
     id?: true
-    weekPlanId?: true
     title?: true
-    skillId?: true
     status?: true
     notes?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
+    skillId?: true
   }
 
   export type GoalCountAggregateInputType = {
     id?: true
-    weekPlanId?: true
     title?: true
-    skillId?: true
     status?: true
     notes?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
+    skillId?: true
     _all?: true
   }
 
@@ -6023,12 +6184,13 @@ export namespace Prisma {
 
   export type GoalGroupByOutputType = {
     id: string
-    weekPlanId: string
     title: string
-    skillId: string
     status: $Enums.GoalStatus
     notes: string | null
     createdAt: Date
+    userId: string
+    weekPlanId: string
+    skillId: string
     _count: GoalCountAggregateOutputType | null
     _min: GoalMinAggregateOutputType | null
     _max: GoalMaxAggregateOutputType | null
@@ -6050,78 +6212,90 @@ export namespace Prisma {
 
   export type GoalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     title?: boolean
-    skillId?: boolean
     status?: boolean
     notes?: boolean
     createdAt?: boolean
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    userId?: boolean
+    weekPlanId?: boolean
+    skillId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["goal"]>
 
   export type GoalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     title?: boolean
-    skillId?: boolean
     status?: boolean
     notes?: boolean
     createdAt?: boolean
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    userId?: boolean
+    weekPlanId?: boolean
+    skillId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["goal"]>
 
   export type GoalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     title?: boolean
-    skillId?: boolean
     status?: boolean
     notes?: boolean
     createdAt?: boolean
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    userId?: boolean
+    weekPlanId?: boolean
+    skillId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["goal"]>
 
   export type GoalSelectScalar = {
     id?: boolean
-    weekPlanId?: boolean
     title?: boolean
-    skillId?: boolean
     status?: boolean
     notes?: boolean
     createdAt?: boolean
+    userId?: boolean
+    weekPlanId?: boolean
+    skillId?: boolean
   }
 
-  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "weekPlanId" | "title" | "skillId" | "status" | "notes" | "createdAt", ExtArgs["result"]["goal"]>
+  export type GoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "status" | "notes" | "createdAt" | "userId" | "weekPlanId" | "skillId", ExtArgs["result"]["goal"]>
   export type GoalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }
   export type GoalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }
   export type GoalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    skill?: boolean | SkillDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
+    skill?: boolean | SkillDefaultArgs<ExtArgs>
   }
 
   export type $GoalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Goal"
     objects: {
-      skill: Prisma.$SkillPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
       weekPlan: Prisma.$WeekPlanPayload<ExtArgs>
+      skill: Prisma.$SkillPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      weekPlanId: string
       title: string
-      skillId: string
       status: $Enums.GoalStatus
       notes: string | null
       createdAt: Date
+      userId: string
+      weekPlanId: string
+      skillId: string
     }, ExtArgs["result"]["goal"]>
     composites: {}
   }
@@ -6516,8 +6690,9 @@ export namespace Prisma {
    */
   export interface Prisma__GoalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    skill<T extends SkillDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SkillDefaultArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     weekPlan<T extends WeekPlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeekPlanDefaultArgs<ExtArgs>>): Prisma__WeekPlanClient<$Result.GetResult<Prisma.$WeekPlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    skill<T extends SkillDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SkillDefaultArgs<ExtArgs>>): Prisma__SkillClient<$Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6548,12 +6723,13 @@ export namespace Prisma {
    */
   interface GoalFieldRefs {
     readonly id: FieldRef<"Goal", 'String'>
-    readonly weekPlanId: FieldRef<"Goal", 'String'>
     readonly title: FieldRef<"Goal", 'String'>
-    readonly skillId: FieldRef<"Goal", 'String'>
     readonly status: FieldRef<"Goal", 'GoalStatus'>
     readonly notes: FieldRef<"Goal", 'String'>
     readonly createdAt: FieldRef<"Goal", 'DateTime'>
+    readonly userId: FieldRef<"Goal", 'String'>
+    readonly weekPlanId: FieldRef<"Goal", 'String'>
+    readonly skillId: FieldRef<"Goal", 'String'>
   }
     
 
@@ -6980,64 +7156,70 @@ export namespace Prisma {
 
   export type ReflectionMinAggregateOutputType = {
     id: string | null
-    weekPlanId: string | null
     summary: string | null
     challenges: string | null
     wins: string | null
     ideas: string | null
     createdAt: Date | null
+    userId: string | null
+    weekPlanId: string | null
   }
 
   export type ReflectionMaxAggregateOutputType = {
     id: string | null
-    weekPlanId: string | null
     summary: string | null
     challenges: string | null
     wins: string | null
     ideas: string | null
     createdAt: Date | null
+    userId: string | null
+    weekPlanId: string | null
   }
 
   export type ReflectionCountAggregateOutputType = {
     id: number
-    weekPlanId: number
     summary: number
     challenges: number
     wins: number
     ideas: number
     createdAt: number
+    userId: number
+    weekPlanId: number
     _all: number
   }
 
 
   export type ReflectionMinAggregateInputType = {
     id?: true
-    weekPlanId?: true
     summary?: true
     challenges?: true
     wins?: true
     ideas?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
   }
 
   export type ReflectionMaxAggregateInputType = {
     id?: true
-    weekPlanId?: true
     summary?: true
     challenges?: true
     wins?: true
     ideas?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
   }
 
   export type ReflectionCountAggregateInputType = {
     id?: true
-    weekPlanId?: true
     summary?: true
     challenges?: true
     wins?: true
     ideas?: true
     createdAt?: true
+    userId?: true
+    weekPlanId?: true
     _all?: true
   }
 
@@ -7115,12 +7297,13 @@ export namespace Prisma {
 
   export type ReflectionGroupByOutputType = {
     id: string
-    weekPlanId: string
     summary: string
     challenges: string
     wins: string
     ideas: string
     createdAt: Date
+    userId: string
+    weekPlanId: string
     _count: ReflectionCountAggregateOutputType | null
     _min: ReflectionMinAggregateOutputType | null
     _max: ReflectionMaxAggregateOutputType | null
@@ -7142,71 +7325,83 @@ export namespace Prisma {
 
   export type ReflectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     summary?: boolean
     challenges?: boolean
     wins?: boolean
     ideas?: boolean
     createdAt?: boolean
+    userId?: boolean
+    weekPlanId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reflection"]>
 
   export type ReflectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     summary?: boolean
     challenges?: boolean
     wins?: boolean
     ideas?: boolean
     createdAt?: boolean
+    userId?: boolean
+    weekPlanId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reflection"]>
 
   export type ReflectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    weekPlanId?: boolean
     summary?: boolean
     challenges?: boolean
     wins?: boolean
     ideas?: boolean
     createdAt?: boolean
+    userId?: boolean
+    weekPlanId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reflection"]>
 
   export type ReflectionSelectScalar = {
     id?: boolean
-    weekPlanId?: boolean
     summary?: boolean
     challenges?: boolean
     wins?: boolean
     ideas?: boolean
     createdAt?: boolean
+    userId?: boolean
+    weekPlanId?: boolean
   }
 
-  export type ReflectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "weekPlanId" | "summary" | "challenges" | "wins" | "ideas" | "createdAt", ExtArgs["result"]["reflection"]>
+  export type ReflectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "summary" | "challenges" | "wins" | "ideas" | "createdAt" | "userId" | "weekPlanId", ExtArgs["result"]["reflection"]>
   export type ReflectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }
   export type ReflectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }
   export type ReflectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     weekPlan?: boolean | WeekPlanDefaultArgs<ExtArgs>
   }
 
   export type $ReflectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Reflection"
     objects: {
+      user: Prisma.$UserPayload<ExtArgs>
       weekPlan: Prisma.$WeekPlanPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      weekPlanId: string
       summary: string
       challenges: string
       wins: string
       ideas: string
       createdAt: Date
+      userId: string
+      weekPlanId: string
     }, ExtArgs["result"]["reflection"]>
     composites: {}
   }
@@ -7601,6 +7796,7 @@ export namespace Prisma {
    */
   export interface Prisma__ReflectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     weekPlan<T extends WeekPlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeekPlanDefaultArgs<ExtArgs>>): Prisma__WeekPlanClient<$Result.GetResult<Prisma.$WeekPlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7632,12 +7828,13 @@ export namespace Prisma {
    */
   interface ReflectionFieldRefs {
     readonly id: FieldRef<"Reflection", 'String'>
-    readonly weekPlanId: FieldRef<"Reflection", 'String'>
     readonly summary: FieldRef<"Reflection", 'String'>
     readonly challenges: FieldRef<"Reflection", 'String'>
     readonly wins: FieldRef<"Reflection", 'String'>
     readonly ideas: FieldRef<"Reflection", 'String'>
     readonly createdAt: FieldRef<"Reflection", 'DateTime'>
+    readonly userId: FieldRef<"Reflection", 'String'>
+    readonly weekPlanId: FieldRef<"Reflection", 'String'>
   }
     
 
@@ -8080,7 +8277,9 @@ export namespace Prisma {
 
   export const SkillCategoryScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    createdAt: 'createdAt',
+    userId: 'userId'
   };
 
   export type SkillCategoryScalarFieldEnum = (typeof SkillCategoryScalarFieldEnum)[keyof typeof SkillCategoryScalarFieldEnum]
@@ -8102,10 +8301,10 @@ export namespace Prisma {
 
   export const WeekPlanScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
     startDate: 'startDate',
     endDate: 'endDate',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    userId: 'userId'
   };
 
   export type WeekPlanScalarFieldEnum = (typeof WeekPlanScalarFieldEnum)[keyof typeof WeekPlanScalarFieldEnum]
@@ -8113,12 +8312,13 @@ export namespace Prisma {
 
   export const GoalScalarFieldEnum: {
     id: 'id',
-    weekPlanId: 'weekPlanId',
     title: 'title',
-    skillId: 'skillId',
     status: 'status',
     notes: 'notes',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    userId: 'userId',
+    weekPlanId: 'weekPlanId',
+    skillId: 'skillId'
   };
 
   export type GoalScalarFieldEnum = (typeof GoalScalarFieldEnum)[keyof typeof GoalScalarFieldEnum]
@@ -8126,12 +8326,13 @@ export namespace Prisma {
 
   export const ReflectionScalarFieldEnum: {
     id: 'id',
-    weekPlanId: 'weekPlanId',
     summary: 'summary',
     challenges: 'challenges',
     wins: 'wins',
     ideas: 'ideas',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    userId: 'userId',
+    weekPlanId: 'weekPlanId'
   };
 
   export type ReflectionScalarFieldEnum = (typeof ReflectionScalarFieldEnum)[keyof typeof ReflectionScalarFieldEnum]
@@ -8249,8 +8450,11 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     refreshToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
-    Skill?: SkillListRelationFilter
-    WeekPlan?: WeekPlanListRelationFilter
+    skills?: SkillListRelationFilter
+    categories?: SkillCategoryListRelationFilter
+    weekPlans?: WeekPlanListRelationFilter
+    goals?: GoalListRelationFilter
+    reflections?: ReflectionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8260,8 +8464,11 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     refreshToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    Skill?: SkillOrderByRelationAggregateInput
-    WeekPlan?: WeekPlanOrderByRelationAggregateInput
+    skills?: SkillOrderByRelationAggregateInput
+    categories?: SkillCategoryOrderByRelationAggregateInput
+    weekPlans?: WeekPlanOrderByRelationAggregateInput
+    goals?: GoalOrderByRelationAggregateInput
+    reflections?: ReflectionOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8274,8 +8481,11 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     refreshToken?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
-    Skill?: SkillListRelationFilter
-    WeekPlan?: WeekPlanListRelationFilter
+    skills?: SkillListRelationFilter
+    categories?: SkillCategoryListRelationFilter
+    weekPlans?: WeekPlanListRelationFilter
+    goals?: GoalListRelationFilter
+    reflections?: ReflectionListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8308,27 +8518,39 @@ export namespace Prisma {
     NOT?: SkillCategoryWhereInput | SkillCategoryWhereInput[]
     id?: StringFilter<"SkillCategory"> | string
     name?: StringFilter<"SkillCategory"> | string
+    createdAt?: DateTimeFilter<"SkillCategory"> | Date | string
+    userId?: StringFilter<"SkillCategory"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     skills?: SkillListRelationFilter
   }
 
   export type SkillCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
     skills?: SkillOrderByRelationAggregateInput
   }
 
   export type SkillCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name?: string
+    name_userId?: SkillCategoryNameUserIdCompoundUniqueInput
     AND?: SkillCategoryWhereInput | SkillCategoryWhereInput[]
     OR?: SkillCategoryWhereInput[]
     NOT?: SkillCategoryWhereInput | SkillCategoryWhereInput[]
+    name?: StringFilter<"SkillCategory"> | string
+    createdAt?: DateTimeFilter<"SkillCategory"> | Date | string
+    userId?: StringFilter<"SkillCategory"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     skills?: SkillListRelationFilter
-  }, "id" | "name">
+  }, "id" | "name_userId">
 
   export type SkillCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    userId?: SortOrder
     _count?: SkillCategoryCountOrderByAggregateInput
     _max?: SkillCategoryMaxOrderByAggregateInput
     _min?: SkillCategoryMinOrderByAggregateInput
@@ -8340,6 +8562,8 @@ export namespace Prisma {
     NOT?: SkillCategoryScalarWhereWithAggregatesInput | SkillCategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SkillCategory"> | string
     name?: StringWithAggregatesFilter<"SkillCategory"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"SkillCategory"> | Date | string
+    userId?: StringWithAggregatesFilter<"SkillCategory"> | string
   }
 
   export type SkillWhereInput = {
@@ -8356,7 +8580,7 @@ export namespace Prisma {
     categoryId?: StringFilter<"Skill"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<SkillCategoryScalarRelationFilter, SkillCategoryWhereInput>
-    Goal?: GoalListRelationFilter
+    goals?: GoalListRelationFilter
   }
 
   export type SkillOrderByWithRelationInput = {
@@ -8370,11 +8594,12 @@ export namespace Prisma {
     categoryId?: SortOrder
     user?: UserOrderByWithRelationInput
     category?: SkillCategoryOrderByWithRelationInput
-    Goal?: GoalOrderByRelationAggregateInput
+    goals?: GoalOrderByRelationAggregateInput
   }
 
   export type SkillWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name_userId?: SkillNameUserIdCompoundUniqueInput
     AND?: SkillWhereInput | SkillWhereInput[]
     OR?: SkillWhereInput[]
     NOT?: SkillWhereInput | SkillWhereInput[]
@@ -8387,8 +8612,8 @@ export namespace Prisma {
     categoryId?: StringFilter<"Skill"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<SkillCategoryScalarRelationFilter, SkillCategoryWhereInput>
-    Goal?: GoalListRelationFilter
-  }, "id">
+    goals?: GoalListRelationFilter
+  }, "id" | "name_userId">
 
   export type SkillOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8423,24 +8648,24 @@ export namespace Prisma {
     OR?: WeekPlanWhereInput[]
     NOT?: WeekPlanWhereInput | WeekPlanWhereInput[]
     id?: StringFilter<"WeekPlan"> | string
-    userId?: StringFilter<"WeekPlan"> | string
     startDate?: DateTimeFilter<"WeekPlan"> | Date | string
     endDate?: DateTimeFilter<"WeekPlan"> | Date | string
     createdAt?: DateTimeFilter<"WeekPlan"> | Date | string
+    userId?: StringFilter<"WeekPlan"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     goals?: GoalListRelationFilter
     reflection?: XOR<ReflectionNullableScalarRelationFilter, ReflectionWhereInput> | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type WeekPlanOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
     goals?: GoalOrderByRelationAggregateInput
     reflection?: ReflectionOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
   }
 
   export type WeekPlanWhereUniqueInput = Prisma.AtLeast<{
@@ -8448,21 +8673,21 @@ export namespace Prisma {
     AND?: WeekPlanWhereInput | WeekPlanWhereInput[]
     OR?: WeekPlanWhereInput[]
     NOT?: WeekPlanWhereInput | WeekPlanWhereInput[]
-    userId?: StringFilter<"WeekPlan"> | string
     startDate?: DateTimeFilter<"WeekPlan"> | Date | string
     endDate?: DateTimeFilter<"WeekPlan"> | Date | string
     createdAt?: DateTimeFilter<"WeekPlan"> | Date | string
+    userId?: StringFilter<"WeekPlan"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     goals?: GoalListRelationFilter
     reflection?: XOR<ReflectionNullableScalarRelationFilter, ReflectionWhereInput> | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type WeekPlanOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
     _count?: WeekPlanCountOrderByAggregateInput
     _max?: WeekPlanMaxOrderByAggregateInput
     _min?: WeekPlanMinOrderByAggregateInput
@@ -8473,10 +8698,10 @@ export namespace Prisma {
     OR?: WeekPlanScalarWhereWithAggregatesInput[]
     NOT?: WeekPlanScalarWhereWithAggregatesInput | WeekPlanScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"WeekPlan"> | string
-    userId?: StringWithAggregatesFilter<"WeekPlan"> | string
     startDate?: DateTimeWithAggregatesFilter<"WeekPlan"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"WeekPlan"> | Date | string
     createdAt?: DateTimeWithAggregatesFilter<"WeekPlan"> | Date | string
+    userId?: StringWithAggregatesFilter<"WeekPlan"> | string
   }
 
   export type GoalWhereInput = {
@@ -8484,26 +8709,30 @@ export namespace Prisma {
     OR?: GoalWhereInput[]
     NOT?: GoalWhereInput | GoalWhereInput[]
     id?: StringFilter<"Goal"> | string
-    weekPlanId?: StringFilter<"Goal"> | string
     title?: StringFilter<"Goal"> | string
-    skillId?: StringFilter<"Goal"> | string
     status?: EnumGoalStatusFilter<"Goal"> | $Enums.GoalStatus
     notes?: StringNullableFilter<"Goal"> | string | null
     createdAt?: DateTimeFilter<"Goal"> | Date | string
-    skill?: XOR<SkillScalarRelationFilter, SkillWhereInput>
+    userId?: StringFilter<"Goal"> | string
+    weekPlanId?: StringFilter<"Goal"> | string
+    skillId?: StringFilter<"Goal"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     weekPlan?: XOR<WeekPlanScalarRelationFilter, WeekPlanWhereInput>
+    skill?: XOR<SkillScalarRelationFilter, SkillWhereInput>
   }
 
   export type GoalOrderByWithRelationInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     title?: SortOrder
-    skillId?: SortOrder
     status?: SortOrder
     notes?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    skill?: SkillOrderByWithRelationInput
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    skillId?: SortOrder
+    user?: UserOrderByWithRelationInput
     weekPlan?: WeekPlanOrderByWithRelationInput
+    skill?: SkillOrderByWithRelationInput
   }
 
   export type GoalWhereUniqueInput = Prisma.AtLeast<{
@@ -8511,24 +8740,27 @@ export namespace Prisma {
     AND?: GoalWhereInput | GoalWhereInput[]
     OR?: GoalWhereInput[]
     NOT?: GoalWhereInput | GoalWhereInput[]
-    weekPlanId?: StringFilter<"Goal"> | string
     title?: StringFilter<"Goal"> | string
-    skillId?: StringFilter<"Goal"> | string
     status?: EnumGoalStatusFilter<"Goal"> | $Enums.GoalStatus
     notes?: StringNullableFilter<"Goal"> | string | null
     createdAt?: DateTimeFilter<"Goal"> | Date | string
-    skill?: XOR<SkillScalarRelationFilter, SkillWhereInput>
+    userId?: StringFilter<"Goal"> | string
+    weekPlanId?: StringFilter<"Goal"> | string
+    skillId?: StringFilter<"Goal"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     weekPlan?: XOR<WeekPlanScalarRelationFilter, WeekPlanWhereInput>
+    skill?: XOR<SkillScalarRelationFilter, SkillWhereInput>
   }, "id">
 
   export type GoalOrderByWithAggregationInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     title?: SortOrder
-    skillId?: SortOrder
     status?: SortOrder
     notes?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    skillId?: SortOrder
     _count?: GoalCountOrderByAggregateInput
     _max?: GoalMaxOrderByAggregateInput
     _min?: GoalMinOrderByAggregateInput
@@ -8539,12 +8771,13 @@ export namespace Prisma {
     OR?: GoalScalarWhereWithAggregatesInput[]
     NOT?: GoalScalarWhereWithAggregatesInput | GoalScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Goal"> | string
-    weekPlanId?: StringWithAggregatesFilter<"Goal"> | string
     title?: StringWithAggregatesFilter<"Goal"> | string
-    skillId?: StringWithAggregatesFilter<"Goal"> | string
     status?: EnumGoalStatusWithAggregatesFilter<"Goal"> | $Enums.GoalStatus
     notes?: StringNullableWithAggregatesFilter<"Goal"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Goal"> | Date | string
+    userId?: StringWithAggregatesFilter<"Goal"> | string
+    weekPlanId?: StringWithAggregatesFilter<"Goal"> | string
+    skillId?: StringWithAggregatesFilter<"Goal"> | string
   }
 
   export type ReflectionWhereInput = {
@@ -8552,23 +8785,27 @@ export namespace Prisma {
     OR?: ReflectionWhereInput[]
     NOT?: ReflectionWhereInput | ReflectionWhereInput[]
     id?: StringFilter<"Reflection"> | string
-    weekPlanId?: StringFilter<"Reflection"> | string
     summary?: StringFilter<"Reflection"> | string
     challenges?: StringFilter<"Reflection"> | string
     wins?: StringFilter<"Reflection"> | string
     ideas?: StringFilter<"Reflection"> | string
     createdAt?: DateTimeFilter<"Reflection"> | Date | string
+    userId?: StringFilter<"Reflection"> | string
+    weekPlanId?: StringFilter<"Reflection"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     weekPlan?: XOR<WeekPlanScalarRelationFilter, WeekPlanWhereInput>
   }
 
   export type ReflectionOrderByWithRelationInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     summary?: SortOrder
     challenges?: SortOrder
     wins?: SortOrder
     ideas?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    user?: UserOrderByWithRelationInput
     weekPlan?: WeekPlanOrderByWithRelationInput
   }
 
@@ -8583,17 +8820,20 @@ export namespace Prisma {
     wins?: StringFilter<"Reflection"> | string
     ideas?: StringFilter<"Reflection"> | string
     createdAt?: DateTimeFilter<"Reflection"> | Date | string
+    userId?: StringFilter<"Reflection"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     weekPlan?: XOR<WeekPlanScalarRelationFilter, WeekPlanWhereInput>
   }, "id" | "weekPlanId">
 
   export type ReflectionOrderByWithAggregationInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     summary?: SortOrder
     challenges?: SortOrder
     wins?: SortOrder
     ideas?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
     _count?: ReflectionCountOrderByAggregateInput
     _max?: ReflectionMaxOrderByAggregateInput
     _min?: ReflectionMinOrderByAggregateInput
@@ -8604,12 +8844,13 @@ export namespace Prisma {
     OR?: ReflectionScalarWhereWithAggregatesInput[]
     NOT?: ReflectionScalarWhereWithAggregatesInput | ReflectionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Reflection"> | string
-    weekPlanId?: StringWithAggregatesFilter<"Reflection"> | string
     summary?: StringWithAggregatesFilter<"Reflection"> | string
     challenges?: StringWithAggregatesFilter<"Reflection"> | string
     wins?: StringWithAggregatesFilter<"Reflection"> | string
     ideas?: StringWithAggregatesFilter<"Reflection"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Reflection"> | Date | string
+    userId?: StringWithAggregatesFilter<"Reflection"> | string
+    weekPlanId?: StringWithAggregatesFilter<"Reflection"> | string
   }
 
   export type UserCreateInput = {
@@ -8619,8 +8860,11 @@ export namespace Prisma {
     name?: string | null
     refreshToken?: string | null
     createdAt?: Date | string
-    Skill?: SkillCreateNestedManyWithoutUserInput
-    WeekPlan?: WeekPlanCreateNestedManyWithoutUserInput
+    skills?: SkillCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanCreateNestedManyWithoutUserInput
+    goals?: GoalCreateNestedManyWithoutUserInput
+    reflections?: ReflectionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8630,8 +8874,11 @@ export namespace Prisma {
     name?: string | null
     refreshToken?: string | null
     createdAt?: Date | string
-    Skill?: SkillUncheckedCreateNestedManyWithoutUserInput
-    WeekPlan?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    skills?: SkillUncheckedCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryUncheckedCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    goals?: GoalUncheckedCreateNestedManyWithoutUserInput
+    reflections?: ReflectionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8641,8 +8888,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Skill?: SkillUpdateManyWithoutUserNestedInput
-    WeekPlan?: WeekPlanUpdateManyWithoutUserNestedInput
+    skills?: SkillUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUpdateManyWithoutUserNestedInput
+    goals?: GoalUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8652,8 +8902,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Skill?: SkillUncheckedUpdateManyWithoutUserNestedInput
-    WeekPlan?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    skills?: SkillUncheckedUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUncheckedUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8686,40 +8939,53 @@ export namespace Prisma {
   export type SkillCategoryCreateInput = {
     id?: string
     name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutCategoriesInput
     skills?: SkillCreateNestedManyWithoutCategoryInput
   }
 
   export type SkillCategoryUncheckedCreateInput = {
     id?: string
     name: string
+    createdAt?: Date | string
+    userId: string
     skills?: SkillUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type SkillCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCategoriesNestedInput
     skills?: SkillUpdateManyWithoutCategoryNestedInput
   }
 
   export type SkillCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
     skills?: SkillUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type SkillCategoryCreateManyInput = {
     id?: string
     name: string
+    createdAt?: Date | string
+    userId: string
   }
 
   export type SkillCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SkillCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SkillCreateInput = {
@@ -8729,9 +8995,9 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSkillInput
+    user: UserCreateNestedOneWithoutSkillsInput
     category: SkillCategoryCreateNestedOneWithoutSkillsInput
-    Goal?: GoalCreateNestedManyWithoutSkillInput
+    goals?: GoalCreateNestedManyWithoutSkillInput
   }
 
   export type SkillUncheckedCreateInput = {
@@ -8743,7 +9009,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     categoryId: string
-    Goal?: GoalUncheckedCreateNestedManyWithoutSkillInput
+    goals?: GoalUncheckedCreateNestedManyWithoutSkillInput
   }
 
   export type SkillUpdateInput = {
@@ -8753,9 +9019,9 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSkillNestedInput
+    user?: UserUpdateOneRequiredWithoutSkillsNestedInput
     category?: SkillCategoryUpdateOneRequiredWithoutSkillsNestedInput
-    Goal?: GoalUpdateManyWithoutSkillNestedInput
+    goals?: GoalUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillUncheckedUpdateInput = {
@@ -8767,7 +9033,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
-    Goal?: GoalUncheckedUpdateManyWithoutSkillNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillCreateManyInput = {
@@ -8806,17 +9072,17 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+    user: UserCreateNestedOneWithoutWeekPlansInput
     goals?: GoalCreateNestedManyWithoutWeekPlanInput
     reflection?: ReflectionCreateNestedOneWithoutWeekPlanInput
-    user: UserCreateNestedOneWithoutWeekPlanInput
   }
 
   export type WeekPlanUncheckedCreateInput = {
     id?: string
-    userId: string
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+    userId: string
     goals?: GoalUncheckedCreateNestedManyWithoutWeekPlanInput
     reflection?: ReflectionUncheckedCreateNestedOneWithoutWeekPlanInput
   }
@@ -8826,27 +9092,27 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutWeekPlansNestedInput
     goals?: GoalUpdateManyWithoutWeekPlanNestedInput
     reflection?: ReflectionUpdateOneWithoutWeekPlanNestedInput
-    user?: UserUpdateOneRequiredWithoutWeekPlanNestedInput
   }
 
   export type WeekPlanUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
     goals?: GoalUncheckedUpdateManyWithoutWeekPlanNestedInput
     reflection?: ReflectionUncheckedUpdateOneWithoutWeekPlanNestedInput
   }
 
   export type WeekPlanCreateManyInput = {
     id?: string
-    userId: string
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+    userId: string
   }
 
   export type WeekPlanUpdateManyMutationInput = {
@@ -8858,10 +9124,10 @@ export namespace Prisma {
 
   export type WeekPlanUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalCreateInput = {
@@ -8870,18 +9136,20 @@ export namespace Prisma {
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
-    skill: SkillCreateNestedOneWithoutGoalInput
+    user: UserCreateNestedOneWithoutGoalsInput
     weekPlan: WeekPlanCreateNestedOneWithoutGoalsInput
+    skill: SkillCreateNestedOneWithoutGoalsInput
   }
 
   export type GoalUncheckedCreateInput = {
     id?: string
-    weekPlanId: string
     title: string
-    skillId: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
+    skillId: string
   }
 
   export type GoalUpdateInput = {
@@ -8890,28 +9158,31 @@ export namespace Prisma {
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    skill?: SkillUpdateOneRequiredWithoutGoalNestedInput
+    user?: UserUpdateOneRequiredWithoutGoalsNestedInput
     weekPlan?: WeekPlanUpdateOneRequiredWithoutGoalsNestedInput
+    skill?: SkillUpdateOneRequiredWithoutGoalsNestedInput
   }
 
   export type GoalUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    skillId?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalCreateManyInput = {
     id?: string
-    weekPlanId: string
     title: string
-    skillId: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
+    skillId: string
   }
 
   export type GoalUpdateManyMutationInput = {
@@ -8924,12 +9195,13 @@ export namespace Prisma {
 
   export type GoalUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    skillId?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReflectionCreateInput = {
@@ -8939,17 +9211,19 @@ export namespace Prisma {
     wins: string
     ideas: string
     createdAt?: Date | string
+    user: UserCreateNestedOneWithoutReflectionsInput
     weekPlan: WeekPlanCreateNestedOneWithoutReflectionInput
   }
 
   export type ReflectionUncheckedCreateInput = {
     id?: string
-    weekPlanId: string
     summary: string
     challenges: string
     wins: string
     ideas: string
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
   }
 
   export type ReflectionUpdateInput = {
@@ -8959,27 +9233,30 @@ export namespace Prisma {
     wins?: StringFieldUpdateOperationsInput | string
     ideas?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReflectionsNestedInput
     weekPlan?: WeekPlanUpdateOneRequiredWithoutReflectionNestedInput
   }
 
   export type ReflectionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     challenges?: StringFieldUpdateOperationsInput | string
     wins?: StringFieldUpdateOperationsInput | string
     ideas?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReflectionCreateManyInput = {
     id?: string
-    weekPlanId: string
     summary: string
     challenges: string
     wins: string
     ideas: string
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
   }
 
   export type ReflectionUpdateManyMutationInput = {
@@ -8993,12 +9270,13 @@ export namespace Prisma {
 
   export type ReflectionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     challenges?: StringFieldUpdateOperationsInput | string
     wins?: StringFieldUpdateOperationsInput | string
     ideas?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9048,10 +9326,28 @@ export namespace Prisma {
     none?: SkillWhereInput
   }
 
+  export type SkillCategoryListRelationFilter = {
+    every?: SkillCategoryWhereInput
+    some?: SkillCategoryWhereInput
+    none?: SkillCategoryWhereInput
+  }
+
   export type WeekPlanListRelationFilter = {
     every?: WeekPlanWhereInput
     some?: WeekPlanWhereInput
     none?: WeekPlanWhereInput
+  }
+
+  export type GoalListRelationFilter = {
+    every?: GoalWhereInput
+    some?: GoalWhereInput
+    none?: GoalWhereInput
+  }
+
+  export type ReflectionListRelationFilter = {
+    every?: ReflectionWhereInput
+    some?: ReflectionWhereInput
+    none?: ReflectionWhereInput
   }
 
   export type SortOrderInput = {
@@ -9063,7 +9359,19 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type SkillCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type WeekPlanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GoalOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReflectionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9144,19 +9452,35 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type SkillCategoryNameUserIdCompoundUniqueInput = {
+    name: string
+    userId: string
+  }
+
   export type SkillCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type SkillCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type SkillCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type EnumSkillLevelFilter<$PrismaModel = never> = {
@@ -9166,24 +9490,14 @@ export namespace Prisma {
     not?: NestedEnumSkillLevelFilter<$PrismaModel> | $Enums.SkillLevel
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
   export type SkillCategoryScalarRelationFilter = {
     is?: SkillCategoryWhereInput
     isNot?: SkillCategoryWhereInput
   }
 
-  export type GoalListRelationFilter = {
-    every?: GoalWhereInput
-    some?: GoalWhereInput
-    none?: GoalWhereInput
-  }
-
-  export type GoalOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type SkillNameUserIdCompoundUniqueInput = {
+    name: string
+    userId: string
   }
 
   export type SkillCountOrderByAggregateInput = {
@@ -9236,26 +9550,26 @@ export namespace Prisma {
 
   export type WeekPlanCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type WeekPlanMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type WeekPlanMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type EnumGoalStatusFilter<$PrismaModel = never> = {
@@ -9265,44 +9579,47 @@ export namespace Prisma {
     not?: NestedEnumGoalStatusFilter<$PrismaModel> | $Enums.GoalStatus
   }
 
-  export type SkillScalarRelationFilter = {
-    is?: SkillWhereInput
-    isNot?: SkillWhereInput
-  }
-
   export type WeekPlanScalarRelationFilter = {
     is?: WeekPlanWhereInput
     isNot?: WeekPlanWhereInput
   }
 
+  export type SkillScalarRelationFilter = {
+    is?: SkillWhereInput
+    isNot?: SkillWhereInput
+  }
+
   export type GoalCountOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     title?: SortOrder
-    skillId?: SortOrder
     status?: SortOrder
     notes?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    skillId?: SortOrder
   }
 
   export type GoalMaxOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     title?: SortOrder
-    skillId?: SortOrder
     status?: SortOrder
     notes?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    skillId?: SortOrder
   }
 
   export type GoalMinOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     title?: SortOrder
-    skillId?: SortOrder
     status?: SortOrder
     notes?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
+    skillId?: SortOrder
   }
 
   export type EnumGoalStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -9317,32 +9634,35 @@ export namespace Prisma {
 
   export type ReflectionCountOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     summary?: SortOrder
     challenges?: SortOrder
     wins?: SortOrder
     ideas?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
   }
 
   export type ReflectionMaxOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     summary?: SortOrder
     challenges?: SortOrder
     wins?: SortOrder
     ideas?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
   }
 
   export type ReflectionMinOrderByAggregateInput = {
     id?: SortOrder
-    weekPlanId?: SortOrder
     summary?: SortOrder
     challenges?: SortOrder
     wins?: SortOrder
     ideas?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
+    weekPlanId?: SortOrder
   }
 
   export type SkillCreateNestedManyWithoutUserInput = {
@@ -9352,11 +9672,32 @@ export namespace Prisma {
     connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
   }
 
+  export type SkillCategoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput> | SkillCategoryCreateWithoutUserInput[] | SkillCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SkillCategoryCreateOrConnectWithoutUserInput | SkillCategoryCreateOrConnectWithoutUserInput[]
+    createMany?: SkillCategoryCreateManyUserInputEnvelope
+    connect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+  }
+
   export type WeekPlanCreateNestedManyWithoutUserInput = {
     create?: XOR<WeekPlanCreateWithoutUserInput, WeekPlanUncheckedCreateWithoutUserInput> | WeekPlanCreateWithoutUserInput[] | WeekPlanUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WeekPlanCreateOrConnectWithoutUserInput | WeekPlanCreateOrConnectWithoutUserInput[]
     createMany?: WeekPlanCreateManyUserInputEnvelope
     connect?: WeekPlanWhereUniqueInput | WeekPlanWhereUniqueInput[]
+  }
+
+  export type GoalCreateNestedManyWithoutUserInput = {
+    create?: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput> | GoalCreateWithoutUserInput[] | GoalUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GoalCreateOrConnectWithoutUserInput | GoalCreateOrConnectWithoutUserInput[]
+    createMany?: GoalCreateManyUserInputEnvelope
+    connect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+  }
+
+  export type ReflectionCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput> | ReflectionCreateWithoutUserInput[] | ReflectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReflectionCreateOrConnectWithoutUserInput | ReflectionCreateOrConnectWithoutUserInput[]
+    createMany?: ReflectionCreateManyUserInputEnvelope
+    connect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
   }
 
   export type SkillUncheckedCreateNestedManyWithoutUserInput = {
@@ -9366,11 +9707,32 @@ export namespace Prisma {
     connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
   }
 
+  export type SkillCategoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput> | SkillCategoryCreateWithoutUserInput[] | SkillCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SkillCategoryCreateOrConnectWithoutUserInput | SkillCategoryCreateOrConnectWithoutUserInput[]
+    createMany?: SkillCategoryCreateManyUserInputEnvelope
+    connect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+  }
+
   export type WeekPlanUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<WeekPlanCreateWithoutUserInput, WeekPlanUncheckedCreateWithoutUserInput> | WeekPlanCreateWithoutUserInput[] | WeekPlanUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WeekPlanCreateOrConnectWithoutUserInput | WeekPlanCreateOrConnectWithoutUserInput[]
     createMany?: WeekPlanCreateManyUserInputEnvelope
     connect?: WeekPlanWhereUniqueInput | WeekPlanWhereUniqueInput[]
+  }
+
+  export type GoalUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput> | GoalCreateWithoutUserInput[] | GoalUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GoalCreateOrConnectWithoutUserInput | GoalCreateOrConnectWithoutUserInput[]
+    createMany?: GoalCreateManyUserInputEnvelope
+    connect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+  }
+
+  export type ReflectionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput> | ReflectionCreateWithoutUserInput[] | ReflectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReflectionCreateOrConnectWithoutUserInput | ReflectionCreateOrConnectWithoutUserInput[]
+    createMany?: ReflectionCreateManyUserInputEnvelope
+    connect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9399,6 +9761,20 @@ export namespace Prisma {
     deleteMany?: SkillScalarWhereInput | SkillScalarWhereInput[]
   }
 
+  export type SkillCategoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput> | SkillCategoryCreateWithoutUserInput[] | SkillCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SkillCategoryCreateOrConnectWithoutUserInput | SkillCategoryCreateOrConnectWithoutUserInput[]
+    upsert?: SkillCategoryUpsertWithWhereUniqueWithoutUserInput | SkillCategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SkillCategoryCreateManyUserInputEnvelope
+    set?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    disconnect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    delete?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    connect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    update?: SkillCategoryUpdateWithWhereUniqueWithoutUserInput | SkillCategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SkillCategoryUpdateManyWithWhereWithoutUserInput | SkillCategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SkillCategoryScalarWhereInput | SkillCategoryScalarWhereInput[]
+  }
+
   export type WeekPlanUpdateManyWithoutUserNestedInput = {
     create?: XOR<WeekPlanCreateWithoutUserInput, WeekPlanUncheckedCreateWithoutUserInput> | WeekPlanCreateWithoutUserInput[] | WeekPlanUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WeekPlanCreateOrConnectWithoutUserInput | WeekPlanCreateOrConnectWithoutUserInput[]
@@ -9411,6 +9787,34 @@ export namespace Prisma {
     update?: WeekPlanUpdateWithWhereUniqueWithoutUserInput | WeekPlanUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: WeekPlanUpdateManyWithWhereWithoutUserInput | WeekPlanUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: WeekPlanScalarWhereInput | WeekPlanScalarWhereInput[]
+  }
+
+  export type GoalUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput> | GoalCreateWithoutUserInput[] | GoalUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GoalCreateOrConnectWithoutUserInput | GoalCreateOrConnectWithoutUserInput[]
+    upsert?: GoalUpsertWithWhereUniqueWithoutUserInput | GoalUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GoalCreateManyUserInputEnvelope
+    set?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    disconnect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    delete?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    connect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    update?: GoalUpdateWithWhereUniqueWithoutUserInput | GoalUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GoalUpdateManyWithWhereWithoutUserInput | GoalUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GoalScalarWhereInput | GoalScalarWhereInput[]
+  }
+
+  export type ReflectionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput> | ReflectionCreateWithoutUserInput[] | ReflectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReflectionCreateOrConnectWithoutUserInput | ReflectionCreateOrConnectWithoutUserInput[]
+    upsert?: ReflectionUpsertWithWhereUniqueWithoutUserInput | ReflectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReflectionCreateManyUserInputEnvelope
+    set?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    disconnect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    delete?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    connect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    update?: ReflectionUpdateWithWhereUniqueWithoutUserInput | ReflectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReflectionUpdateManyWithWhereWithoutUserInput | ReflectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReflectionScalarWhereInput | ReflectionScalarWhereInput[]
   }
 
   export type SkillUncheckedUpdateManyWithoutUserNestedInput = {
@@ -9427,6 +9831,20 @@ export namespace Prisma {
     deleteMany?: SkillScalarWhereInput | SkillScalarWhereInput[]
   }
 
+  export type SkillCategoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput> | SkillCategoryCreateWithoutUserInput[] | SkillCategoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SkillCategoryCreateOrConnectWithoutUserInput | SkillCategoryCreateOrConnectWithoutUserInput[]
+    upsert?: SkillCategoryUpsertWithWhereUniqueWithoutUserInput | SkillCategoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SkillCategoryCreateManyUserInputEnvelope
+    set?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    disconnect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    delete?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    connect?: SkillCategoryWhereUniqueInput | SkillCategoryWhereUniqueInput[]
+    update?: SkillCategoryUpdateWithWhereUniqueWithoutUserInput | SkillCategoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SkillCategoryUpdateManyWithWhereWithoutUserInput | SkillCategoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SkillCategoryScalarWhereInput | SkillCategoryScalarWhereInput[]
+  }
+
   export type WeekPlanUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<WeekPlanCreateWithoutUserInput, WeekPlanUncheckedCreateWithoutUserInput> | WeekPlanCreateWithoutUserInput[] | WeekPlanUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WeekPlanCreateOrConnectWithoutUserInput | WeekPlanCreateOrConnectWithoutUserInput[]
@@ -9441,6 +9859,40 @@ export namespace Prisma {
     deleteMany?: WeekPlanScalarWhereInput | WeekPlanScalarWhereInput[]
   }
 
+  export type GoalUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput> | GoalCreateWithoutUserInput[] | GoalUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GoalCreateOrConnectWithoutUserInput | GoalCreateOrConnectWithoutUserInput[]
+    upsert?: GoalUpsertWithWhereUniqueWithoutUserInput | GoalUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GoalCreateManyUserInputEnvelope
+    set?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    disconnect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    delete?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    connect?: GoalWhereUniqueInput | GoalWhereUniqueInput[]
+    update?: GoalUpdateWithWhereUniqueWithoutUserInput | GoalUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GoalUpdateManyWithWhereWithoutUserInput | GoalUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GoalScalarWhereInput | GoalScalarWhereInput[]
+  }
+
+  export type ReflectionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput> | ReflectionCreateWithoutUserInput[] | ReflectionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReflectionCreateOrConnectWithoutUserInput | ReflectionCreateOrConnectWithoutUserInput[]
+    upsert?: ReflectionUpsertWithWhereUniqueWithoutUserInput | ReflectionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReflectionCreateManyUserInputEnvelope
+    set?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    disconnect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    delete?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    connect?: ReflectionWhereUniqueInput | ReflectionWhereUniqueInput[]
+    update?: ReflectionUpdateWithWhereUniqueWithoutUserInput | ReflectionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReflectionUpdateManyWithWhereWithoutUserInput | ReflectionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReflectionScalarWhereInput | ReflectionScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCategoriesInput = {
+    create?: XOR<UserCreateWithoutCategoriesInput, UserUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCategoriesInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type SkillCreateNestedManyWithoutCategoryInput = {
     create?: XOR<SkillCreateWithoutCategoryInput, SkillUncheckedCreateWithoutCategoryInput> | SkillCreateWithoutCategoryInput[] | SkillUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: SkillCreateOrConnectWithoutCategoryInput | SkillCreateOrConnectWithoutCategoryInput[]
@@ -9453,6 +9905,14 @@ export namespace Prisma {
     connectOrCreate?: SkillCreateOrConnectWithoutCategoryInput | SkillCreateOrConnectWithoutCategoryInput[]
     createMany?: SkillCreateManyCategoryInputEnvelope
     connect?: SkillWhereUniqueInput | SkillWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCategoriesNestedInput = {
+    create?: XOR<UserCreateWithoutCategoriesInput, UserUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCategoriesInput
+    upsert?: UserUpsertWithoutCategoriesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCategoriesInput, UserUpdateWithoutCategoriesInput>, UserUncheckedUpdateWithoutCategoriesInput>
   }
 
   export type SkillUpdateManyWithoutCategoryNestedInput = {
@@ -9483,9 +9943,9 @@ export namespace Prisma {
     deleteMany?: SkillScalarWhereInput | SkillScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutSkillInput = {
-    create?: XOR<UserCreateWithoutSkillInput, UserUncheckedCreateWithoutSkillInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSkillInput
+  export type UserCreateNestedOneWithoutSkillsInput = {
+    create?: XOR<UserCreateWithoutSkillsInput, UserUncheckedCreateWithoutSkillsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSkillsInput
     connect?: UserWhereUniqueInput
   }
 
@@ -9513,12 +9973,12 @@ export namespace Prisma {
     set?: $Enums.SkillLevel
   }
 
-  export type UserUpdateOneRequiredWithoutSkillNestedInput = {
-    create?: XOR<UserCreateWithoutSkillInput, UserUncheckedCreateWithoutSkillInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSkillInput
-    upsert?: UserUpsertWithoutSkillInput
+  export type UserUpdateOneRequiredWithoutSkillsNestedInput = {
+    create?: XOR<UserCreateWithoutSkillsInput, UserUncheckedCreateWithoutSkillsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSkillsInput
+    upsert?: UserUpsertWithoutSkillsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSkillInput, UserUpdateWithoutSkillInput>, UserUncheckedUpdateWithoutSkillInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSkillsInput, UserUpdateWithoutSkillsInput>, UserUncheckedUpdateWithoutSkillsInput>
   }
 
   export type SkillCategoryUpdateOneRequiredWithoutSkillsNestedInput = {
@@ -9557,6 +10017,12 @@ export namespace Prisma {
     deleteMany?: GoalScalarWhereInput | GoalScalarWhereInput[]
   }
 
+  export type UserCreateNestedOneWithoutWeekPlansInput = {
+    create?: XOR<UserCreateWithoutWeekPlansInput, UserUncheckedCreateWithoutWeekPlansInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWeekPlansInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type GoalCreateNestedManyWithoutWeekPlanInput = {
     create?: XOR<GoalCreateWithoutWeekPlanInput, GoalUncheckedCreateWithoutWeekPlanInput> | GoalCreateWithoutWeekPlanInput[] | GoalUncheckedCreateWithoutWeekPlanInput[]
     connectOrCreate?: GoalCreateOrConnectWithoutWeekPlanInput | GoalCreateOrConnectWithoutWeekPlanInput[]
@@ -9570,12 +10036,6 @@ export namespace Prisma {
     connect?: ReflectionWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutWeekPlanInput = {
-    create?: XOR<UserCreateWithoutWeekPlanInput, UserUncheckedCreateWithoutWeekPlanInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWeekPlanInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type GoalUncheckedCreateNestedManyWithoutWeekPlanInput = {
     create?: XOR<GoalCreateWithoutWeekPlanInput, GoalUncheckedCreateWithoutWeekPlanInput> | GoalCreateWithoutWeekPlanInput[] | GoalUncheckedCreateWithoutWeekPlanInput[]
     connectOrCreate?: GoalCreateOrConnectWithoutWeekPlanInput | GoalCreateOrConnectWithoutWeekPlanInput[]
@@ -9587,6 +10047,14 @@ export namespace Prisma {
     create?: XOR<ReflectionCreateWithoutWeekPlanInput, ReflectionUncheckedCreateWithoutWeekPlanInput>
     connectOrCreate?: ReflectionCreateOrConnectWithoutWeekPlanInput
     connect?: ReflectionWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutWeekPlansNestedInput = {
+    create?: XOR<UserCreateWithoutWeekPlansInput, UserUncheckedCreateWithoutWeekPlansInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWeekPlansInput
+    upsert?: UserUpsertWithoutWeekPlansInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWeekPlansInput, UserUpdateWithoutWeekPlansInput>, UserUncheckedUpdateWithoutWeekPlansInput>
   }
 
   export type GoalUpdateManyWithoutWeekPlanNestedInput = {
@@ -9613,14 +10081,6 @@ export namespace Prisma {
     update?: XOR<XOR<ReflectionUpdateToOneWithWhereWithoutWeekPlanInput, ReflectionUpdateWithoutWeekPlanInput>, ReflectionUncheckedUpdateWithoutWeekPlanInput>
   }
 
-  export type UserUpdateOneRequiredWithoutWeekPlanNestedInput = {
-    create?: XOR<UserCreateWithoutWeekPlanInput, UserUncheckedCreateWithoutWeekPlanInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWeekPlanInput
-    upsert?: UserUpsertWithoutWeekPlanInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWeekPlanInput, UserUpdateWithoutWeekPlanInput>, UserUncheckedUpdateWithoutWeekPlanInput>
-  }
-
   export type GoalUncheckedUpdateManyWithoutWeekPlanNestedInput = {
     create?: XOR<GoalCreateWithoutWeekPlanInput, GoalUncheckedCreateWithoutWeekPlanInput> | GoalCreateWithoutWeekPlanInput[] | GoalUncheckedCreateWithoutWeekPlanInput[]
     connectOrCreate?: GoalCreateOrConnectWithoutWeekPlanInput | GoalCreateOrConnectWithoutWeekPlanInput[]
@@ -9645,10 +10105,10 @@ export namespace Prisma {
     update?: XOR<XOR<ReflectionUpdateToOneWithWhereWithoutWeekPlanInput, ReflectionUpdateWithoutWeekPlanInput>, ReflectionUncheckedUpdateWithoutWeekPlanInput>
   }
 
-  export type SkillCreateNestedOneWithoutGoalInput = {
-    create?: XOR<SkillCreateWithoutGoalInput, SkillUncheckedCreateWithoutGoalInput>
-    connectOrCreate?: SkillCreateOrConnectWithoutGoalInput
-    connect?: SkillWhereUniqueInput
+  export type UserCreateNestedOneWithoutGoalsInput = {
+    create?: XOR<UserCreateWithoutGoalsInput, UserUncheckedCreateWithoutGoalsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGoalsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type WeekPlanCreateNestedOneWithoutGoalsInput = {
@@ -9657,16 +10117,22 @@ export namespace Prisma {
     connect?: WeekPlanWhereUniqueInput
   }
 
+  export type SkillCreateNestedOneWithoutGoalsInput = {
+    create?: XOR<SkillCreateWithoutGoalsInput, SkillUncheckedCreateWithoutGoalsInput>
+    connectOrCreate?: SkillCreateOrConnectWithoutGoalsInput
+    connect?: SkillWhereUniqueInput
+  }
+
   export type EnumGoalStatusFieldUpdateOperationsInput = {
     set?: $Enums.GoalStatus
   }
 
-  export type SkillUpdateOneRequiredWithoutGoalNestedInput = {
-    create?: XOR<SkillCreateWithoutGoalInput, SkillUncheckedCreateWithoutGoalInput>
-    connectOrCreate?: SkillCreateOrConnectWithoutGoalInput
-    upsert?: SkillUpsertWithoutGoalInput
-    connect?: SkillWhereUniqueInput
-    update?: XOR<XOR<SkillUpdateToOneWithWhereWithoutGoalInput, SkillUpdateWithoutGoalInput>, SkillUncheckedUpdateWithoutGoalInput>
+  export type UserUpdateOneRequiredWithoutGoalsNestedInput = {
+    create?: XOR<UserCreateWithoutGoalsInput, UserUncheckedCreateWithoutGoalsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGoalsInput
+    upsert?: UserUpsertWithoutGoalsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGoalsInput, UserUpdateWithoutGoalsInput>, UserUncheckedUpdateWithoutGoalsInput>
   }
 
   export type WeekPlanUpdateOneRequiredWithoutGoalsNestedInput = {
@@ -9677,10 +10143,32 @@ export namespace Prisma {
     update?: XOR<XOR<WeekPlanUpdateToOneWithWhereWithoutGoalsInput, WeekPlanUpdateWithoutGoalsInput>, WeekPlanUncheckedUpdateWithoutGoalsInput>
   }
 
+  export type SkillUpdateOneRequiredWithoutGoalsNestedInput = {
+    create?: XOR<SkillCreateWithoutGoalsInput, SkillUncheckedCreateWithoutGoalsInput>
+    connectOrCreate?: SkillCreateOrConnectWithoutGoalsInput
+    upsert?: SkillUpsertWithoutGoalsInput
+    connect?: SkillWhereUniqueInput
+    update?: XOR<XOR<SkillUpdateToOneWithWhereWithoutGoalsInput, SkillUpdateWithoutGoalsInput>, SkillUncheckedUpdateWithoutGoalsInput>
+  }
+
+  export type UserCreateNestedOneWithoutReflectionsInput = {
+    create?: XOR<UserCreateWithoutReflectionsInput, UserUncheckedCreateWithoutReflectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReflectionsInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type WeekPlanCreateNestedOneWithoutReflectionInput = {
     create?: XOR<WeekPlanCreateWithoutReflectionInput, WeekPlanUncheckedCreateWithoutReflectionInput>
     connectOrCreate?: WeekPlanCreateOrConnectWithoutReflectionInput
     connect?: WeekPlanWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutReflectionsNestedInput = {
+    create?: XOR<UserCreateWithoutReflectionsInput, UserUncheckedCreateWithoutReflectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReflectionsInput
+    upsert?: UserUpsertWithoutReflectionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReflectionsInput, UserUpdateWithoutReflectionsInput>, UserUncheckedUpdateWithoutReflectionsInput>
   }
 
   export type WeekPlanUpdateOneRequiredWithoutReflectionNestedInput = {
@@ -9842,7 +10330,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     category: SkillCategoryCreateNestedOneWithoutSkillsInput
-    Goal?: GoalCreateNestedManyWithoutSkillInput
+    goals?: GoalCreateNestedManyWithoutSkillInput
   }
 
   export type SkillUncheckedCreateWithoutUserInput = {
@@ -9853,7 +10341,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     categoryId: string
-    Goal?: GoalUncheckedCreateNestedManyWithoutSkillInput
+    goals?: GoalUncheckedCreateNestedManyWithoutSkillInput
   }
 
   export type SkillCreateOrConnectWithoutUserInput = {
@@ -9863,6 +10351,30 @@ export namespace Prisma {
 
   export type SkillCreateManyUserInputEnvelope = {
     data: SkillCreateManyUserInput | SkillCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SkillCategoryCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    skills?: SkillCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SkillCategoryUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    skills?: SkillUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type SkillCategoryCreateOrConnectWithoutUserInput = {
+    where: SkillCategoryWhereUniqueInput
+    create: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type SkillCategoryCreateManyUserInputEnvelope = {
+    data: SkillCategoryCreateManyUserInput | SkillCategoryCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9891,6 +10403,66 @@ export namespace Prisma {
 
   export type WeekPlanCreateManyUserInputEnvelope = {
     data: WeekPlanCreateManyUserInput | WeekPlanCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GoalCreateWithoutUserInput = {
+    id?: string
+    title: string
+    status?: $Enums.GoalStatus
+    notes?: string | null
+    createdAt?: Date | string
+    weekPlan: WeekPlanCreateNestedOneWithoutGoalsInput
+    skill: SkillCreateNestedOneWithoutGoalsInput
+  }
+
+  export type GoalUncheckedCreateWithoutUserInput = {
+    id?: string
+    title: string
+    status?: $Enums.GoalStatus
+    notes?: string | null
+    createdAt?: Date | string
+    weekPlanId: string
+    skillId: string
+  }
+
+  export type GoalCreateOrConnectWithoutUserInput = {
+    where: GoalWhereUniqueInput
+    create: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput>
+  }
+
+  export type GoalCreateManyUserInputEnvelope = {
+    data: GoalCreateManyUserInput | GoalCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReflectionCreateWithoutUserInput = {
+    id?: string
+    summary: string
+    challenges: string
+    wins: string
+    ideas: string
+    createdAt?: Date | string
+    weekPlan: WeekPlanCreateNestedOneWithoutReflectionInput
+  }
+
+  export type ReflectionUncheckedCreateWithoutUserInput = {
+    id?: string
+    summary: string
+    challenges: string
+    wins: string
+    ideas: string
+    createdAt?: Date | string
+    weekPlanId: string
+  }
+
+  export type ReflectionCreateOrConnectWithoutUserInput = {
+    where: ReflectionWhereUniqueInput
+    create: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReflectionCreateManyUserInputEnvelope = {
+    data: ReflectionCreateManyUserInput | ReflectionCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9924,6 +10496,32 @@ export namespace Prisma {
     categoryId?: StringFilter<"Skill"> | string
   }
 
+  export type SkillCategoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: SkillCategoryWhereUniqueInput
+    update: XOR<SkillCategoryUpdateWithoutUserInput, SkillCategoryUncheckedUpdateWithoutUserInput>
+    create: XOR<SkillCategoryCreateWithoutUserInput, SkillCategoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type SkillCategoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: SkillCategoryWhereUniqueInput
+    data: XOR<SkillCategoryUpdateWithoutUserInput, SkillCategoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SkillCategoryUpdateManyWithWhereWithoutUserInput = {
+    where: SkillCategoryScalarWhereInput
+    data: XOR<SkillCategoryUpdateManyMutationInput, SkillCategoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SkillCategoryScalarWhereInput = {
+    AND?: SkillCategoryScalarWhereInput | SkillCategoryScalarWhereInput[]
+    OR?: SkillCategoryScalarWhereInput[]
+    NOT?: SkillCategoryScalarWhereInput | SkillCategoryScalarWhereInput[]
+    id?: StringFilter<"SkillCategory"> | string
+    name?: StringFilter<"SkillCategory"> | string
+    createdAt?: DateTimeFilter<"SkillCategory"> | Date | string
+    userId?: StringFilter<"SkillCategory"> | string
+  }
+
   export type WeekPlanUpsertWithWhereUniqueWithoutUserInput = {
     where: WeekPlanWhereUniqueInput
     update: XOR<WeekPlanUpdateWithoutUserInput, WeekPlanUncheckedUpdateWithoutUserInput>
@@ -9945,10 +10543,101 @@ export namespace Prisma {
     OR?: WeekPlanScalarWhereInput[]
     NOT?: WeekPlanScalarWhereInput | WeekPlanScalarWhereInput[]
     id?: StringFilter<"WeekPlan"> | string
-    userId?: StringFilter<"WeekPlan"> | string
     startDate?: DateTimeFilter<"WeekPlan"> | Date | string
     endDate?: DateTimeFilter<"WeekPlan"> | Date | string
     createdAt?: DateTimeFilter<"WeekPlan"> | Date | string
+    userId?: StringFilter<"WeekPlan"> | string
+  }
+
+  export type GoalUpsertWithWhereUniqueWithoutUserInput = {
+    where: GoalWhereUniqueInput
+    update: XOR<GoalUpdateWithoutUserInput, GoalUncheckedUpdateWithoutUserInput>
+    create: XOR<GoalCreateWithoutUserInput, GoalUncheckedCreateWithoutUserInput>
+  }
+
+  export type GoalUpdateWithWhereUniqueWithoutUserInput = {
+    where: GoalWhereUniqueInput
+    data: XOR<GoalUpdateWithoutUserInput, GoalUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GoalUpdateManyWithWhereWithoutUserInput = {
+    where: GoalScalarWhereInput
+    data: XOR<GoalUpdateManyMutationInput, GoalUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GoalScalarWhereInput = {
+    AND?: GoalScalarWhereInput | GoalScalarWhereInput[]
+    OR?: GoalScalarWhereInput[]
+    NOT?: GoalScalarWhereInput | GoalScalarWhereInput[]
+    id?: StringFilter<"Goal"> | string
+    title?: StringFilter<"Goal"> | string
+    status?: EnumGoalStatusFilter<"Goal"> | $Enums.GoalStatus
+    notes?: StringNullableFilter<"Goal"> | string | null
+    createdAt?: DateTimeFilter<"Goal"> | Date | string
+    userId?: StringFilter<"Goal"> | string
+    weekPlanId?: StringFilter<"Goal"> | string
+    skillId?: StringFilter<"Goal"> | string
+  }
+
+  export type ReflectionUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReflectionWhereUniqueInput
+    update: XOR<ReflectionUpdateWithoutUserInput, ReflectionUncheckedUpdateWithoutUserInput>
+    create: XOR<ReflectionCreateWithoutUserInput, ReflectionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReflectionUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReflectionWhereUniqueInput
+    data: XOR<ReflectionUpdateWithoutUserInput, ReflectionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReflectionUpdateManyWithWhereWithoutUserInput = {
+    where: ReflectionScalarWhereInput
+    data: XOR<ReflectionUpdateManyMutationInput, ReflectionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReflectionScalarWhereInput = {
+    AND?: ReflectionScalarWhereInput | ReflectionScalarWhereInput[]
+    OR?: ReflectionScalarWhereInput[]
+    NOT?: ReflectionScalarWhereInput | ReflectionScalarWhereInput[]
+    id?: StringFilter<"Reflection"> | string
+    summary?: StringFilter<"Reflection"> | string
+    challenges?: StringFilter<"Reflection"> | string
+    wins?: StringFilter<"Reflection"> | string
+    ideas?: StringFilter<"Reflection"> | string
+    createdAt?: DateTimeFilter<"Reflection"> | Date | string
+    userId?: StringFilter<"Reflection"> | string
+    weekPlanId?: StringFilter<"Reflection"> | string
+  }
+
+  export type UserCreateWithoutCategoriesInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanCreateNestedManyWithoutUserInput
+    goals?: GoalCreateNestedManyWithoutUserInput
+    reflections?: ReflectionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCategoriesInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillUncheckedCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    goals?: GoalUncheckedCreateNestedManyWithoutUserInput
+    reflections?: ReflectionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCategoriesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCategoriesInput, UserUncheckedCreateWithoutCategoriesInput>
   }
 
   export type SkillCreateWithoutCategoryInput = {
@@ -9958,8 +10647,8 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSkillInput
-    Goal?: GoalCreateNestedManyWithoutSkillInput
+    user: UserCreateNestedOneWithoutSkillsInput
+    goals?: GoalCreateNestedManyWithoutSkillInput
   }
 
   export type SkillUncheckedCreateWithoutCategoryInput = {
@@ -9970,7 +10659,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
-    Goal?: GoalUncheckedCreateNestedManyWithoutSkillInput
+    goals?: GoalUncheckedCreateNestedManyWithoutSkillInput
   }
 
   export type SkillCreateOrConnectWithoutCategoryInput = {
@@ -9981,6 +10670,43 @@ export namespace Prisma {
   export type SkillCreateManyCategoryInputEnvelope = {
     data: SkillCreateManyCategoryInput | SkillCreateManyCategoryInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutCategoriesInput = {
+    update: XOR<UserUpdateWithoutCategoriesInput, UserUncheckedUpdateWithoutCategoriesInput>
+    create: XOR<UserCreateWithoutCategoriesInput, UserUncheckedCreateWithoutCategoriesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCategoriesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCategoriesInput, UserUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type UserUpdateWithoutCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUpdateManyWithoutUserNestedInput
+    goals?: GoalUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUncheckedUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SkillUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -9999,39 +10725,49 @@ export namespace Prisma {
     data: XOR<SkillUpdateManyMutationInput, SkillUncheckedUpdateManyWithoutCategoryInput>
   }
 
-  export type UserCreateWithoutSkillInput = {
+  export type UserCreateWithoutSkillsInput = {
     id?: string
     email: string
     password: string
     name?: string | null
     refreshToken?: string | null
     createdAt?: Date | string
-    WeekPlan?: WeekPlanCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanCreateNestedManyWithoutUserInput
+    goals?: GoalCreateNestedManyWithoutUserInput
+    reflections?: ReflectionCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSkillInput = {
+  export type UserUncheckedCreateWithoutSkillsInput = {
     id?: string
     email: string
     password: string
     name?: string | null
     refreshToken?: string | null
     createdAt?: Date | string
-    WeekPlan?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryUncheckedCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    goals?: GoalUncheckedCreateNestedManyWithoutUserInput
+    reflections?: ReflectionUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSkillInput = {
+  export type UserCreateOrConnectWithoutSkillsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSkillInput, UserUncheckedCreateWithoutSkillInput>
+    create: XOR<UserCreateWithoutSkillsInput, UserUncheckedCreateWithoutSkillsInput>
   }
 
   export type SkillCategoryCreateWithoutSkillsInput = {
     id?: string
     name: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutCategoriesInput
   }
 
   export type SkillCategoryUncheckedCreateWithoutSkillsInput = {
     id?: string
     name: string
+    createdAt?: Date | string
+    userId: string
   }
 
   export type SkillCategoryCreateOrConnectWithoutSkillsInput = {
@@ -10045,16 +10781,18 @@ export namespace Prisma {
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    user: UserCreateNestedOneWithoutGoalsInput
     weekPlan: WeekPlanCreateNestedOneWithoutGoalsInput
   }
 
   export type GoalUncheckedCreateWithoutSkillInput = {
     id?: string
-    weekPlanId: string
     title: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
   }
 
   export type GoalCreateOrConnectWithoutSkillInput = {
@@ -10067,35 +10805,41 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutSkillInput = {
-    update: XOR<UserUpdateWithoutSkillInput, UserUncheckedUpdateWithoutSkillInput>
-    create: XOR<UserCreateWithoutSkillInput, UserUncheckedCreateWithoutSkillInput>
+  export type UserUpsertWithoutSkillsInput = {
+    update: XOR<UserUpdateWithoutSkillsInput, UserUncheckedUpdateWithoutSkillsInput>
+    create: XOR<UserCreateWithoutSkillsInput, UserUncheckedCreateWithoutSkillsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSkillInput = {
+  export type UserUpdateToOneWithWhereWithoutSkillsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSkillInput, UserUncheckedUpdateWithoutSkillInput>
+    data: XOR<UserUpdateWithoutSkillsInput, UserUncheckedUpdateWithoutSkillsInput>
   }
 
-  export type UserUpdateWithoutSkillInput = {
+  export type UserUpdateWithoutSkillsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WeekPlan?: WeekPlanUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUpdateManyWithoutUserNestedInput
+    goals?: GoalUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSkillInput = {
+  export type UserUncheckedUpdateWithoutSkillsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WeekPlan?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUncheckedUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SkillCategoryUpsertWithoutSkillsInput = {
@@ -10112,11 +10856,15 @@ export namespace Prisma {
   export type SkillCategoryUpdateWithoutSkillsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutCategoriesNestedInput
   }
 
   export type SkillCategoryUncheckedUpdateWithoutSkillsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalUpsertWithWhereUniqueWithoutSkillInput = {
@@ -10135,17 +10883,35 @@ export namespace Prisma {
     data: XOR<GoalUpdateManyMutationInput, GoalUncheckedUpdateManyWithoutSkillInput>
   }
 
-  export type GoalScalarWhereInput = {
-    AND?: GoalScalarWhereInput | GoalScalarWhereInput[]
-    OR?: GoalScalarWhereInput[]
-    NOT?: GoalScalarWhereInput | GoalScalarWhereInput[]
-    id?: StringFilter<"Goal"> | string
-    weekPlanId?: StringFilter<"Goal"> | string
-    title?: StringFilter<"Goal"> | string
-    skillId?: StringFilter<"Goal"> | string
-    status?: EnumGoalStatusFilter<"Goal"> | $Enums.GoalStatus
-    notes?: StringNullableFilter<"Goal"> | string | null
-    createdAt?: DateTimeFilter<"Goal"> | Date | string
+  export type UserCreateWithoutWeekPlansInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryCreateNestedManyWithoutUserInput
+    goals?: GoalCreateNestedManyWithoutUserInput
+    reflections?: ReflectionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutWeekPlansInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillUncheckedCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryUncheckedCreateNestedManyWithoutUserInput
+    goals?: GoalUncheckedCreateNestedManyWithoutUserInput
+    reflections?: ReflectionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutWeekPlansInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutWeekPlansInput, UserUncheckedCreateWithoutWeekPlansInput>
   }
 
   export type GoalCreateWithoutWeekPlanInput = {
@@ -10154,16 +10920,18 @@ export namespace Prisma {
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
-    skill: SkillCreateNestedOneWithoutGoalInput
+    user: UserCreateNestedOneWithoutGoalsInput
+    skill: SkillCreateNestedOneWithoutGoalsInput
   }
 
   export type GoalUncheckedCreateWithoutWeekPlanInput = {
     id?: string
     title: string
-    skillId: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    skillId: string
   }
 
   export type GoalCreateOrConnectWithoutWeekPlanInput = {
@@ -10183,6 +10951,7 @@ export namespace Prisma {
     wins: string
     ideas: string
     createdAt?: Date | string
+    user: UserCreateNestedOneWithoutReflectionsInput
   }
 
   export type ReflectionUncheckedCreateWithoutWeekPlanInput = {
@@ -10192,6 +10961,7 @@ export namespace Prisma {
     wins: string
     ideas: string
     createdAt?: Date | string
+    userId: string
   }
 
   export type ReflectionCreateOrConnectWithoutWeekPlanInput = {
@@ -10199,29 +10969,41 @@ export namespace Prisma {
     create: XOR<ReflectionCreateWithoutWeekPlanInput, ReflectionUncheckedCreateWithoutWeekPlanInput>
   }
 
-  export type UserCreateWithoutWeekPlanInput = {
-    id?: string
-    email: string
-    password: string
-    name?: string | null
-    refreshToken?: string | null
-    createdAt?: Date | string
-    Skill?: SkillCreateNestedManyWithoutUserInput
+  export type UserUpsertWithoutWeekPlansInput = {
+    update: XOR<UserUpdateWithoutWeekPlansInput, UserUncheckedUpdateWithoutWeekPlansInput>
+    create: XOR<UserCreateWithoutWeekPlansInput, UserUncheckedCreateWithoutWeekPlansInput>
+    where?: UserWhereInput
   }
 
-  export type UserUncheckedCreateWithoutWeekPlanInput = {
-    id?: string
-    email: string
-    password: string
-    name?: string | null
-    refreshToken?: string | null
-    createdAt?: Date | string
-    Skill?: SkillUncheckedCreateNestedManyWithoutUserInput
+  export type UserUpdateToOneWithWhereWithoutWeekPlansInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutWeekPlansInput, UserUncheckedUpdateWithoutWeekPlansInput>
   }
 
-  export type UserCreateOrConnectWithoutWeekPlanInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutWeekPlanInput, UserUncheckedCreateWithoutWeekPlanInput>
+  export type UserUpdateWithoutWeekPlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUpdateManyWithoutUserNestedInput
+    goals?: GoalUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutWeekPlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUncheckedUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUncheckedUpdateManyWithoutUserNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type GoalUpsertWithWhereUniqueWithoutWeekPlanInput = {
@@ -10258,6 +11040,7 @@ export namespace Prisma {
     wins?: StringFieldUpdateOperationsInput | string
     ideas?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReflectionsNestedInput
   }
 
   export type ReflectionUncheckedUpdateWithoutWeekPlanInput = {
@@ -10267,51 +11050,75 @@ export namespace Prisma {
     wins?: StringFieldUpdateOperationsInput | string
     ideas?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserUpsertWithoutWeekPlanInput = {
-    update: XOR<UserUpdateWithoutWeekPlanInput, UserUncheckedUpdateWithoutWeekPlanInput>
-    create: XOR<UserCreateWithoutWeekPlanInput, UserUncheckedCreateWithoutWeekPlanInput>
-    where?: UserWhereInput
+  export type UserCreateWithoutGoalsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanCreateNestedManyWithoutUserInput
+    reflections?: ReflectionCreateNestedManyWithoutUserInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutWeekPlanInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutWeekPlanInput, UserUncheckedUpdateWithoutWeekPlanInput>
+  export type UserUncheckedCreateWithoutGoalsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillUncheckedCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryUncheckedCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    reflections?: ReflectionUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserUpdateWithoutWeekPlanInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Skill?: SkillUpdateManyWithoutUserNestedInput
+  export type UserCreateOrConnectWithoutGoalsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGoalsInput, UserUncheckedCreateWithoutGoalsInput>
   }
 
-  export type UserUncheckedUpdateWithoutWeekPlanInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Skill?: SkillUncheckedUpdateManyWithoutUserNestedInput
+  export type WeekPlanCreateWithoutGoalsInput = {
+    id?: string
+    startDate: Date | string
+    endDate: Date | string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutWeekPlansInput
+    reflection?: ReflectionCreateNestedOneWithoutWeekPlanInput
   }
 
-  export type SkillCreateWithoutGoalInput = {
+  export type WeekPlanUncheckedCreateWithoutGoalsInput = {
+    id?: string
+    startDate: Date | string
+    endDate: Date | string
+    createdAt?: Date | string
+    userId: string
+    reflection?: ReflectionUncheckedCreateNestedOneWithoutWeekPlanInput
+  }
+
+  export type WeekPlanCreateOrConnectWithoutGoalsInput = {
+    where: WeekPlanWhereUniqueInput
+    create: XOR<WeekPlanCreateWithoutGoalsInput, WeekPlanUncheckedCreateWithoutGoalsInput>
+  }
+
+  export type SkillCreateWithoutGoalsInput = {
     id?: string
     name: string
     level: $Enums.SkillLevel
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSkillInput
+    user: UserCreateNestedOneWithoutSkillsInput
     category: SkillCategoryCreateNestedOneWithoutSkillsInput
   }
 
-  export type SkillUncheckedCreateWithoutGoalInput = {
+  export type SkillUncheckedCreateWithoutGoalsInput = {
     id?: string
     name: string
     level: $Enums.SkillLevel
@@ -10322,65 +11129,46 @@ export namespace Prisma {
     categoryId: string
   }
 
-  export type SkillCreateOrConnectWithoutGoalInput = {
+  export type SkillCreateOrConnectWithoutGoalsInput = {
     where: SkillWhereUniqueInput
-    create: XOR<SkillCreateWithoutGoalInput, SkillUncheckedCreateWithoutGoalInput>
+    create: XOR<SkillCreateWithoutGoalsInput, SkillUncheckedCreateWithoutGoalsInput>
   }
 
-  export type WeekPlanCreateWithoutGoalsInput = {
-    id?: string
-    startDate: Date | string
-    endDate: Date | string
-    createdAt?: Date | string
-    reflection?: ReflectionCreateNestedOneWithoutWeekPlanInput
-    user: UserCreateNestedOneWithoutWeekPlanInput
+  export type UserUpsertWithoutGoalsInput = {
+    update: XOR<UserUpdateWithoutGoalsInput, UserUncheckedUpdateWithoutGoalsInput>
+    create: XOR<UserCreateWithoutGoalsInput, UserUncheckedCreateWithoutGoalsInput>
+    where?: UserWhereInput
   }
 
-  export type WeekPlanUncheckedCreateWithoutGoalsInput = {
-    id?: string
-    userId: string
-    startDate: Date | string
-    endDate: Date | string
-    createdAt?: Date | string
-    reflection?: ReflectionUncheckedCreateNestedOneWithoutWeekPlanInput
+  export type UserUpdateToOneWithWhereWithoutGoalsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGoalsInput, UserUncheckedUpdateWithoutGoalsInput>
   }
 
-  export type WeekPlanCreateOrConnectWithoutGoalsInput = {
-    where: WeekPlanWhereUniqueInput
-    create: XOR<WeekPlanCreateWithoutGoalsInput, WeekPlanUncheckedCreateWithoutGoalsInput>
-  }
-
-  export type SkillUpsertWithoutGoalInput = {
-    update: XOR<SkillUpdateWithoutGoalInput, SkillUncheckedUpdateWithoutGoalInput>
-    create: XOR<SkillCreateWithoutGoalInput, SkillUncheckedCreateWithoutGoalInput>
-    where?: SkillWhereInput
-  }
-
-  export type SkillUpdateToOneWithWhereWithoutGoalInput = {
-    where?: SkillWhereInput
-    data: XOR<SkillUpdateWithoutGoalInput, SkillUncheckedUpdateWithoutGoalInput>
-  }
-
-  export type SkillUpdateWithoutGoalInput = {
+  export type UserUpdateWithoutGoalsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSkillNestedInput
-    category?: SkillCategoryUpdateOneRequiredWithoutSkillsNestedInput
+    skills?: SkillUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUpdateManyWithoutUserNestedInput
   }
 
-  export type SkillUncheckedUpdateWithoutGoalInput = {
+  export type UserUncheckedUpdateWithoutGoalsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
-    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    categoryId?: StringFieldUpdateOperationsInput | string
+    skills?: SkillUncheckedUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUncheckedUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    reflections?: ReflectionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WeekPlanUpsertWithoutGoalsInput = {
@@ -10399,17 +11187,81 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutWeekPlansNestedInput
     reflection?: ReflectionUpdateOneWithoutWeekPlanNestedInput
-    user?: UserUpdateOneRequiredWithoutWeekPlanNestedInput
   }
 
   export type WeekPlanUncheckedUpdateWithoutGoalsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
     reflection?: ReflectionUncheckedUpdateOneWithoutWeekPlanNestedInput
+  }
+
+  export type SkillUpsertWithoutGoalsInput = {
+    update: XOR<SkillUpdateWithoutGoalsInput, SkillUncheckedUpdateWithoutGoalsInput>
+    create: XOR<SkillCreateWithoutGoalsInput, SkillUncheckedCreateWithoutGoalsInput>
+    where?: SkillWhereInput
+  }
+
+  export type SkillUpdateToOneWithWhereWithoutGoalsInput = {
+    where?: SkillWhereInput
+    data: XOR<SkillUpdateWithoutGoalsInput, SkillUncheckedUpdateWithoutGoalsInput>
+  }
+
+  export type SkillUpdateWithoutGoalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSkillsNestedInput
+    category?: SkillCategoryUpdateOneRequiredWithoutSkillsNestedInput
+  }
+
+  export type SkillUncheckedUpdateWithoutGoalsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    level?: EnumSkillLevelFieldUpdateOperationsInput | $Enums.SkillLevel
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCreateWithoutReflectionsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanCreateNestedManyWithoutUserInput
+    goals?: GoalCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReflectionsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    skills?: SkillUncheckedCreateNestedManyWithoutUserInput
+    categories?: SkillCategoryUncheckedCreateNestedManyWithoutUserInput
+    weekPlans?: WeekPlanUncheckedCreateNestedManyWithoutUserInput
+    goals?: GoalUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReflectionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReflectionsInput, UserUncheckedCreateWithoutReflectionsInput>
   }
 
   export type WeekPlanCreateWithoutReflectionInput = {
@@ -10417,22 +11269,59 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+    user: UserCreateNestedOneWithoutWeekPlansInput
     goals?: GoalCreateNestedManyWithoutWeekPlanInput
-    user: UserCreateNestedOneWithoutWeekPlanInput
   }
 
   export type WeekPlanUncheckedCreateWithoutReflectionInput = {
     id?: string
-    userId: string
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+    userId: string
     goals?: GoalUncheckedCreateNestedManyWithoutWeekPlanInput
   }
 
   export type WeekPlanCreateOrConnectWithoutReflectionInput = {
     where: WeekPlanWhereUniqueInput
     create: XOR<WeekPlanCreateWithoutReflectionInput, WeekPlanUncheckedCreateWithoutReflectionInput>
+  }
+
+  export type UserUpsertWithoutReflectionsInput = {
+    update: XOR<UserUpdateWithoutReflectionsInput, UserUncheckedUpdateWithoutReflectionsInput>
+    create: XOR<UserCreateWithoutReflectionsInput, UserUncheckedCreateWithoutReflectionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReflectionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReflectionsInput, UserUncheckedUpdateWithoutReflectionsInput>
+  }
+
+  export type UserUpdateWithoutReflectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUpdateManyWithoutUserNestedInput
+    goals?: GoalUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReflectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUncheckedUpdateManyWithoutUserNestedInput
+    categories?: SkillCategoryUncheckedUpdateManyWithoutUserNestedInput
+    weekPlans?: WeekPlanUncheckedUpdateManyWithoutUserNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type WeekPlanUpsertWithoutReflectionInput = {
@@ -10451,16 +11340,16 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutWeekPlansNestedInput
     goals?: GoalUpdateManyWithoutWeekPlanNestedInput
-    user?: UserUpdateOneRequiredWithoutWeekPlanNestedInput
   }
 
   export type WeekPlanUncheckedUpdateWithoutReflectionInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
     goals?: GoalUncheckedUpdateManyWithoutWeekPlanNestedInput
   }
 
@@ -10474,11 +11363,37 @@ export namespace Prisma {
     categoryId: string
   }
 
+  export type SkillCategoryCreateManyUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+  }
+
   export type WeekPlanCreateManyUserInput = {
     id?: string
     startDate: Date | string
     endDate: Date | string
     createdAt?: Date | string
+  }
+
+  export type GoalCreateManyUserInput = {
+    id?: string
+    title: string
+    status?: $Enums.GoalStatus
+    notes?: string | null
+    createdAt?: Date | string
+    weekPlanId: string
+    skillId: string
+  }
+
+  export type ReflectionCreateManyUserInput = {
+    id?: string
+    summary: string
+    challenges: string
+    wins: string
+    ideas: string
+    createdAt?: Date | string
+    weekPlanId: string
   }
 
   export type SkillUpdateWithoutUserInput = {
@@ -10489,7 +11404,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: SkillCategoryUpdateOneRequiredWithoutSkillsNestedInput
-    Goal?: GoalUpdateManyWithoutSkillNestedInput
+    goals?: GoalUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillUncheckedUpdateWithoutUserInput = {
@@ -10500,7 +11415,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
-    Goal?: GoalUncheckedUpdateManyWithoutSkillNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillUncheckedUpdateManyWithoutUserInput = {
@@ -10511,6 +11426,26 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SkillCategoryUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SkillCategoryUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    skills?: SkillUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type SkillCategoryUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WeekPlanUpdateWithoutUserInput = {
@@ -10538,6 +11473,66 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type GoalUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlan?: WeekPlanUpdateOneRequiredWithoutGoalsNestedInput
+    skill?: SkillUpdateOneRequiredWithoutGoalsNestedInput
+  }
+
+  export type GoalUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type GoalUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ReflectionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    challenges?: StringFieldUpdateOperationsInput | string
+    wins?: StringFieldUpdateOperationsInput | string
+    ideas?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlan?: WeekPlanUpdateOneRequiredWithoutReflectionNestedInput
+  }
+
+  export type ReflectionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    challenges?: StringFieldUpdateOperationsInput | string
+    wins?: StringFieldUpdateOperationsInput | string
+    ideas?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ReflectionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    challenges?: StringFieldUpdateOperationsInput | string
+    wins?: StringFieldUpdateOperationsInput | string
+    ideas?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type SkillCreateManyCategoryInput = {
     id?: string
     name: string
@@ -10555,8 +11550,8 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSkillNestedInput
-    Goal?: GoalUpdateManyWithoutSkillNestedInput
+    user?: UserUpdateOneRequiredWithoutSkillsNestedInput
+    goals?: GoalUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillUncheckedUpdateWithoutCategoryInput = {
@@ -10567,7 +11562,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
-    Goal?: GoalUncheckedUpdateManyWithoutSkillNestedInput
+    goals?: GoalUncheckedUpdateManyWithoutSkillNestedInput
   }
 
   export type SkillUncheckedUpdateManyWithoutCategoryInput = {
@@ -10582,11 +11577,12 @@ export namespace Prisma {
 
   export type GoalCreateManySkillInput = {
     id?: string
-    weekPlanId: string
     title: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    weekPlanId: string
   }
 
   export type GoalUpdateWithoutSkillInput = {
@@ -10595,34 +11591,38 @@ export namespace Prisma {
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutGoalsNestedInput
     weekPlan?: WeekPlanUpdateOneRequiredWithoutGoalsNestedInput
   }
 
   export type GoalUncheckedUpdateWithoutSkillInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalUncheckedUpdateManyWithoutSkillInput = {
     id?: StringFieldUpdateOperationsInput | string
-    weekPlanId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    weekPlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalCreateManyWeekPlanInput = {
     id?: string
     title: string
-    skillId: string
     status?: $Enums.GoalStatus
     notes?: string | null
     createdAt?: Date | string
+    userId: string
+    skillId: string
   }
 
   export type GoalUpdateWithoutWeekPlanInput = {
@@ -10631,25 +11631,28 @@ export namespace Prisma {
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    skill?: SkillUpdateOneRequiredWithoutGoalNestedInput
+    user?: UserUpdateOneRequiredWithoutGoalsNestedInput
+    skill?: SkillUpdateOneRequiredWithoutGoalsNestedInput
   }
 
   export type GoalUncheckedUpdateWithoutWeekPlanInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    skillId?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GoalUncheckedUpdateManyWithoutWeekPlanInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    skillId?: StringFieldUpdateOperationsInput | string
     status?: EnumGoalStatusFieldUpdateOperationsInput | $Enums.GoalStatus
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    skillId?: StringFieldUpdateOperationsInput | string
   }
 
 

@@ -131,7 +131,9 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.SkillCategoryScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  userId: 'userId'
 };
 
 exports.Prisma.SkillScalarFieldEnum = {
@@ -147,30 +149,32 @@ exports.Prisma.SkillScalarFieldEnum = {
 
 exports.Prisma.WeekPlanScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
   startDate: 'startDate',
   endDate: 'endDate',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  userId: 'userId'
 };
 
 exports.Prisma.GoalScalarFieldEnum = {
   id: 'id',
-  weekPlanId: 'weekPlanId',
   title: 'title',
-  skillId: 'skillId',
   status: 'status',
   notes: 'notes',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  userId: 'userId',
+  weekPlanId: 'weekPlanId',
+  skillId: 'skillId'
 };
 
 exports.Prisma.ReflectionScalarFieldEnum = {
   id: 'id',
-  weekPlanId: 'weekPlanId',
   summary: 'summary',
   challenges: 'challenges',
   wins: 'wins',
   ideas: 'ideas',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  userId: 'userId',
+  weekPlanId: 'weekPlanId'
 };
 
 exports.Prisma.SortOrder = {
