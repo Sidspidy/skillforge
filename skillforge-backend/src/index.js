@@ -5,7 +5,7 @@ const app = express();
 const initializeRoutes = require("./routes/index");
 
 // CORS Middleware
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 initializeRoutes(app);
