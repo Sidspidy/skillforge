@@ -1,8 +1,3 @@
-Here's your complete `README.md` as a **single file**:
-
----
-
-```markdown
 # 🧠 SkillForge
 
 > A full-stack skill tracking and weekly planning app built with **React + Tailwind CSS** on the frontend and **Node.js + Express + Prisma** on the backend.
@@ -122,7 +117,3 @@ MIT © SkillForge
 
 ```
 
----
-
-Replace `Sidspidy` and database credentials with your actual values. Let me know if you want a deployment-specific version (e.g. for Vercel + Render).
-```
