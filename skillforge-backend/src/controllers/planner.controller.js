@@ -45,7 +45,7 @@ exports.addGoal = async (req, res) => {
     }
 
     const goal = await prisma.goal.create({
-      data: { weekPlanId, title, skillId, notes },
+      data: { weekPlanId, title, skillId, notes, userId },
     });
 
     res.status(201).json({ success: true, data: goal });
@@ -124,7 +124,7 @@ exports.submitReflection = async (req, res) => {
     }
 
     const reflection = await prisma.reflection.create({
-      data: { weekPlanId, summary, challenges, wins, ideas },
+      data: { weekPlanId, summary, challenges, wins, ideas, userId },
     });
 
     res.status(201).json({ success: true, data: reflection });

@@ -196,7 +196,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\WELCOME\\Desktop\\my projects\\skillforge\\skillforge-backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\WELCOME\\Desktop\\my projects\\SpiderVerse\\skillforge\\skillforge-backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -210,7 +210,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\WELCOME\\Desktop\\my projects\\skillforge\\skillforge-backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\WELCOME\\Desktop\\my projects\\SpiderVerse\\skillforge\\skillforge-backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -224,6 +224,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

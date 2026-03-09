@@ -3,15 +3,15 @@ import { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
-import { 
-  Home, 
-  User, 
-  Brain, 
-  Calendar, 
-  FolderOpen, 
-  LogOut, 
-  Menu, 
-  X 
+import {
+  Home,
+  User,
+  Brain,
+  Calendar,
+  FolderOpen,
+  LogOut,
+  Menu,
+  X
 } from 'lucide-react';
 
 export function Layout() {
@@ -21,8 +21,8 @@ export function Layout() {
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'Skills', href: '/skills', icon: Brain },
     { name: 'Categories', href: '/categories', icon: FolderOpen },
+    { name: 'Skills', href: '/skills', icon: Brain },
     { name: 'Planner', href: '/planner', icon: Calendar },
     { name: 'Profile', href: '/profile', icon: User },
   ];
@@ -30,31 +30,34 @@ export function Layout() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex">
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-100 via-blue-50 to-indigo-50 flex relative">
+      {/* Decorative background blurs for the main layout */}
+      <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-blue-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob pointer-events-none z-0"></div>
+      <div className="fixed top-[40%] left-[-10%] w-[400px] h-[400px] bg-purple-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob animation-delay-2000 pointer-events-none z-0"></div>
+
       {/* Mobile sidebar overlay */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-white/95 backdrop-blur-xl shadow-2xl border-r border-gray-200/50 transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-white/70 backdrop-blur-2xl shadow-[4px_0_24px_rgba(0,0,0,0.02)] border-r border-white/50 transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
         {/* Logo Header */}
-        <div className="flex items-center justify-between h-20 px-6 border-b border-gray-200/50 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div className="flex items-center justify-between h-20 px-6 border-b border-gray-200/30 bg-white/50 backdrop-blur-md">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-blue-600 font-bold text-lg">SF</span>
+            <div className="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <span className="text-white font-bold text-lg">SF</span>
             </div>
-            <h1 className="text-xl font-bold text-white">SkillForge</h1>
+            <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">SkillForge</h1>
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="lg:hidden text-white hover:bg-white/20"
+            className="lg:hidden text-gray-500 hover:bg-gray-100/50"
             onClick={() => setIsSidebarOpen(false)}
           >
             <X className="h-5 w-5" />
@@ -67,17 +70,18 @@ export function Layout() {
             <Link
               key={item.name}
               to={item.href}
-              className={`group flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200 ${
-                isActive(item.href)
-                  ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg shadow-blue-500/25'
-                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 hover:shadow-md hover:scale-105'
-              }`}
+              className={`group flex items-center px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-300 ${isActive(item.href)
+                  ? 'bg-white text-blue-700 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-white/60 translate-x-1'
+                  : 'text-gray-600 hover:bg-white/60 hover:text-gray-900 hover:shadow-sm'
+                }`}
               onClick={() => setIsSidebarOpen(false)}
             >
-              <item.icon className={`mr-4 h-6 w-6 transition-transform group-hover:scale-110 ${
-                isActive(item.href) ? 'text-white' : 'text-gray-500'
-              }`} />
+              <item.icon className={`mr-4 h-5 w-5 transition-transform duration-300 ${isActive(item.href) ? 'text-blue-600 scale-110' : 'text-gray-400 group-hover:scale-110 group-hover:text-gray-600'
+                }`} />
               {item.name}
+              {isActive(item.href) && (
+                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+              )}
             </Link>
           ))}
         </nav>
@@ -96,9 +100,12 @@ export function Layout() {
       </div>
 
       {/* Main content */}
-      <div className="w-full">
+      <div className="flex-1 flex flex-col min-w-0 z-10">
         {/* Top bar with gradient */}
-        <div className="h-20 bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-200/50 flex items-center px-6">
+        <div className="h-20 bg-white/40 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] border-b border-white/50 flex items-center px-6 sticky top-0 z-40 relative">
+          {/* Subtle top progress bar / accent */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-80"></div>
+
           <Button
             variant="ghost"
             size="sm"
@@ -107,7 +114,7 @@ export function Layout() {
           >
             <Menu className="h-5 w-5" />
           </Button>
-          
+
           <div className="flex-1">
             <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               {navigation.find(item => isActive(item.href))?.name || 'SkillForge'}
